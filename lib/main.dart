@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Petrik'),
     );
   }
 }
@@ -108,16 +108,20 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.newspaper_rounded),
+            label: 'Petrik News',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Business',
+            label: 'IKSZ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.abc),
+            label: 'Helyettesités',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.access_alarm_outlined),
+            label: 'Órarend',
           ),
         ],
         selectedItemColor: Colors.amber[800],
