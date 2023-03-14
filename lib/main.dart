@@ -7,23 +7,30 @@ class PetrikApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Petrik App',
-      home: const Scaffold(),
+      theme: ThemeData(
+        primarySwatch: Colors.cyan,
+      ),
+      home: const RootPage(),
     );
   }
 }
 
-class RoorPage extends StatefulWidget {
-  const RoorPage({super.key});
+class RootPage extends StatefulWidget {
+  const RootPage({super.key});
 
   @override
-  State<RoorPage> createState() => _RoorPageState();
+  State<RootPage> createState() => _RootPageState();
 }
 
-class _RoorPageState extends State<RoorPage> {
+class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Petrik news'),
+      ),
+    );
   }
 }
