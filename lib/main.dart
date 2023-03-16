@@ -32,9 +32,8 @@ class _RootPageState extends State<RootPage> {
       appBar: AppBar(
         title: Text('Petrik news'),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
+      body: Center(
+        child: Text('Hello world'),
       ),
     );
   }
