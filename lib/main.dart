@@ -29,12 +29,28 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Petrik news'),
-      ),
-      body: const Center(
-        child: Text('Hello world'),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('Petrik news'),
+        ),
+        body: const Center(
+          child: Text('Hello world'),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'News',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.business),
+              label: 'Iksz',
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.school), label: 'Helyettesítés'),
+            BottomNavigationBarItem(icon: Icon(Icons.school), label: 'Órarend'),
+          ],
+          currentIndex: 0,
+          selectedItemColor: Colors.amber[800],
+        ));
   }
 }
