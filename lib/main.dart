@@ -30,9 +30,9 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Petrik news'),
+        title: const Text('Petrik news'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Hello world'),
       ),
     );
