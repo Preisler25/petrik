@@ -13,13 +13,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
-    Page1(),
-    Page2(),
-    Page3(),
-    Page4(),
+    const Page1(),
+    const Page2(),
+    const Page3(),
+    const Page4(),
   ];
 
   void _onItemTapped(int index) {
@@ -38,7 +36,7 @@ class _MyAppState extends State<MyApp> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Petrik news'),
+          title: const Text('Petrik news'),
         ),
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
@@ -190,7 +188,7 @@ class ListItem {
           alignment: const Alignment(0.0, 0.0),
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20.0,
               color: Colors.black,
             ),
