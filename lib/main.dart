@@ -151,3 +151,16 @@ class Page4 extends StatelessWidget {
     );
   }
 }
+
+class Post extends StatelessWidget {
+  final List<ListItem> items;
+
+  const Post({super.key, required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+class ListItem {}
