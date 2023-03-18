@@ -176,17 +176,27 @@ class ListItem {
 
   Widget buildPost(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(10, 20, 20, 10),
-      border: Border.all(color: Colors.black),
-      child: Align(
-          alignment: Alignment(0.0, 0.0),
-          child: TextButton(
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+      margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: TextButton(
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+        ),
+        onPressed: () {},
+        child: Align(
+          alignment: const Alignment(0.0, 0.0),
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 20.0,
+              color: Colors.black,
             ),
-            onPressed: () {},
-            child: Text(title),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
