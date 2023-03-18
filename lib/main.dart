@@ -175,6 +175,15 @@ class ListItem {
   ListItem(this.title);
 
   Widget buildTitle(BuildContext context) {
-    return Text(title);
+    return Container(
+        padding: const EdgeInsets.all(10.0),
+        child: Center(
+            child: Text(title,
+                style: TextStyle(
+                  fontSize: 20.0,
+                ))),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black),
+        ));
   }
 }
