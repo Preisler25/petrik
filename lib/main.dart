@@ -78,13 +78,13 @@ class Page1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue,
+      color: Colors.white10,
       child: Center(
         child: Text(
           'Page 1',
           style: TextStyle(
             fontSize: 30.0,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
       ),
@@ -98,16 +98,14 @@ class Page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.green,
+      color: Colors.white10,
       child: Center(
-        child: Text(
-          'Page 2',
-          style: TextStyle(
-            fontSize: 30.0,
-            color: Colors.white,
-          ),
+          child: Post(
+        items: List<ListItem>.generate(
+          1000,
+          (i) => ListItem("Item $i"),
         ),
-      ),
+      )),
     );
   }
 }
@@ -118,13 +116,13 @@ class Page3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.orange,
+      color: Colors.white10,
       child: Center(
         child: Text(
           'Page 3',
           style: TextStyle(
             fontSize: 30.0,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
       ),
@@ -138,13 +136,13 @@ class Page4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
+      color: Colors.white10,
       child: Center(
         child: Text(
           'Page 4',
           style: TextStyle(
             fontSize: 30.0,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
       ),
@@ -159,8 +157,24 @@ class Post extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        final item = items[index];
+        return ListTile(
+          title: item.buildTitle(context),
+        );
+      },
+    );
   }
 }
 
-class ListItem {}
+class ListItem {
+  final String title;
+
+  ListItem(this.title);
+
+  Widget buildTitle(BuildContext context) {
+    return Text(title);
+  }
+}
