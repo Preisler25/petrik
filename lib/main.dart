@@ -162,7 +162,7 @@ class Post extends StatelessWidget {
       itemBuilder: (context, index) {
         final item = items[index];
         return ListTile(
-          title: item.buildTitle(context),
+          title: item.buildPost(context),
         );
       },
     );
@@ -174,31 +174,19 @@ class ListItem {
 
   ListItem(this.title);
 
-  Widget buildTitle(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          padding: const EdgeInsets.fromLTRB(100.0, 10.0, 100.0, 10.0),
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.black,
+  Widget buildPost(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(10, 20, 20, 10),
+      border: Border.all(color: Colors.black),
+      child: Align(
+          alignment: Alignment(0.0, 0.0),
+          child: TextButton(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
             ),
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          child: Text(
-            title,
-            style: const TextStyle(
-              fontSize: 20.0,
-            ),
-          ),
-        ),
-        TextButton(
-            onPressed: () => debugPrint('TextButton pressed'),
-            child: const Align(
-              alignment: Alignment.centerRight,
-              child: Text('Alma'),
-            )),
-      ],
+            onPressed: () {},
+            child: Text(title),
+          )),
     );
   }
 }
