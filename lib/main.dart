@@ -175,15 +175,30 @@ class ListItem {
   ListItem(this.title);
 
   Widget buildTitle(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.all(10.0),
-        child: Center(
-            child: Text(title,
-                style: TextStyle(
-                  fontSize: 20.0,
-                ))),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
-        ));
+    return Stack(
+      children: [
+        Container(
+          padding: const EdgeInsets.fromLTRB(100.0, 10.0, 100.0, 10.0),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.black,
+            ),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20.0,
+            ),
+          ),
+        ),
+        TextButton(
+            onPressed: () => debugPrint('TextButton pressed'),
+            child: const Align(
+              alignment: Alignment.centerRight,
+              child: Text('Alma'),
+            )),
+      ],
+    );
   }
 }
