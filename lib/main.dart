@@ -183,29 +183,22 @@ class Post extends StatelessWidget {
         closedShape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(6)),
         ),
-        closedColor: Color.fromARGB(255, 79, 218, 236),
+        closedColor: const Color.fromARGB(255, 79, 218, 236),
         closedBuilder: (context, action) {
-          return Container(
-            width: 200,
-            height: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6),
-            ),
-            child: Align(
-              alignment: const Alignment(0.0, 0.0),
-              child: Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.black,
-                ),
+          return Align(
+            alignment: const Alignment(0.0, 0.0),
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 20.0,
+                color: Colors.black,
               ),
             ),
           );
         },
         openBuilder: (context, action) {
           return Container(
-            color: Color.fromARGB(255, 79, 218, 236),
+            color: const Color.fromARGB(255, 79, 218, 236),
             child: Center(
               child: Text(
                 title,
