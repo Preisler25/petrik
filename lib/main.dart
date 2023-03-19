@@ -175,39 +175,48 @@ class Post extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SizedBox(
-        width: 200,
-        height: 200,
-        child: OpenContainer(
-          closedElevation: 0,
-          closedShape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(6)),
-          ),
-          closedColor: Colors.white,
-          closedBuilder: (context, action) {
-            return Container(
-              margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Align(
-                alignment: const Alignment(0.0, 0.0),
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.black,
-                  ),
+    return SizedBox(
+      width: 200,
+      height: 200,
+      child: OpenContainer(
+        closedElevation: 0,
+        closedShape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(6)),
+        ),
+        closedColor: Colors.white,
+        closedBuilder: (context, action) {
+          return Container(
+            margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Align(
+              alignment: const Alignment(0.0, 0.0),
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.black,
                 ),
               ),
-            );
-          },
-          openBuilder: (context, action) {
-            return const Page2();
-          },
-        ),
+            ),
+          );
+        },
+        openBuilder: (context, action) {
+          return Container(
+            color: Colors.white,
+            child: Center(
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 30.0,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
