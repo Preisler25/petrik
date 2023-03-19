@@ -183,7 +183,9 @@ class ListItem {
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
         ),
-        onPressed: () {},
+        onPressed: () {
+          debugPrint(title);
+        },
         child: Align(
           alignment: const Alignment(0.0, 0.0),
           child: Text(
@@ -196,5 +198,14 @@ class ListItem {
         ),
       ),
     );
+  }
+}
+
+class PostOnOpen extends StatelessWidget {
+  const PostOnOpen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
