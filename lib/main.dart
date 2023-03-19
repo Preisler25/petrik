@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animations/animations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -98,10 +99,10 @@ class Page2 extends StatelessWidget {
     return Container(
       color: Colors.white10,
       child: Center(
-          child: Post(
-        items: List<ListItem>.generate(
+          child: PostList(
+        items: List<Post>.generate(
           1000,
-          (i) => ListItem("Item $i"),
+          (i) => Post(title: "Item $i"),
         ),
       )),
     );
@@ -148,10 +149,10 @@ class Page4 extends StatelessWidget {
   }
 }
 
-class Post extends StatelessWidget {
-  final List<ListItem> items;
+class PostList extends StatelessWidget {
+  final List<Post> items;
 
-  const Post({super.key, required this.items});
+  const PostList({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -160,52 +161,63 @@ class Post extends StatelessWidget {
       itemBuilder: (context, index) {
         final item = items[index];
         return ListTile(
-          title: item.buildPost(context),
+          title: item.build(context),
         );
       },
     );
   }
 }
 
-class ListItem {
-  final String title;
+class Post extends StatelessWidget {
+  String title;
 
-  ListItem(this.title);
-
-  Widget buildPost(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: TextButton(
-        style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-        ),
-        onPressed: () {
-          debugPrint(title);
-        },
-        child: Align(
-          alignment: const Alignment(0.0, 0.0),
-          child: Text(
-            title,
-            style: const TextStyle(
-              fontSize: 20.0,
-              color: Colors.black,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class PostOnOpen extends StatelessWidget {
-  const PostOnOpen({super.key});
+  Post({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: SizedBox(
+        width: 200,
+        height: 200,
+        child: OpenContainer(
+          closedElevation: 0,
+          closedShape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(6)),
+          ),
+          closedColor: Colors.white,
+          closedBuilder: (context, action) {
+            return Container(
+              margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: TextButton(
+                style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                ),
+                onPressed: () {
+                  debugPrint("Button pressed");
+                },
+                child: Align(
+                  alignment: const Alignment(0.0, 0.0),
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+          openBuilder: (context, action) {
+            return const Page2();
+          },
+        ),
+      ),
+    );
   }
 }
