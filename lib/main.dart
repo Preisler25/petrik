@@ -192,22 +192,13 @@ class Post extends StatelessWidget {
                 border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: TextButton(
-                style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
-                ),
-                onPressed: () {
-                  debugPrint("Button pressed");
-                },
-                child: Align(
-                  alignment: const Alignment(0.0, 0.0),
-                  child: Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.black,
-                    ),
+              child: Align(
+                alignment: const Alignment(0.0, 0.0),
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.black,
                   ),
                 ),
               ),
