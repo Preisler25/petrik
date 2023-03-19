@@ -206,6 +206,10 @@ class Post extends StatelessWidget {
         openBuilder: (context, action) {
           return Container(
             color: Colors.white,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black),
+              borderRadius: BorderRadius.circular(12),
+            ),
             child: Center(
               child: Text(
                 title,
