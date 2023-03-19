@@ -179,17 +179,17 @@ class Post extends StatelessWidget {
       width: 200,
       height: 200,
       child: OpenContainer(
-        closedElevation: 0,
+        closedElevation: 10,
         closedShape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(6)),
         ),
-        closedColor: Colors.white,
+        closedColor: Color.fromARGB(255, 79, 218, 236),
         closedBuilder: (context, action) {
           return Container(
-            margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+            width: 200,
+            height: 200,
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(6),
             ),
             child: Align(
               alignment: const Alignment(0.0, 0.0),
@@ -205,7 +205,7 @@ class Post extends StatelessWidget {
         },
         openBuilder: (context, action) {
           return Container(
-            color: Colors.white,
+            color: Color.fromARGB(255, 79, 218, 236),
             child: Center(
               child: Text(
                 title,
