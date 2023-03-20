@@ -303,11 +303,15 @@ class PostInner {
                   alignment: const Alignment(0, -0.5),
                   child: Text(description),
                 ),
-                const Align(
-                  alignment: Alignment(0.0, 0.9),
-                  child: Image(
-                    image: NetworkImage(
-                        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                Align(
+                  alignment: const Alignment(0.0, 0.9),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: const Image(
+                      image: NetworkImage(
+                          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                      width: 200,
+                    ),
                   ),
                 ),
                 Align(
