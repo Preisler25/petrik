@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Petrik',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.cyan,
       ),
       home: Scaffold(
         appBar: AppBar(
@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          selectedItemColor: Colors.blue,
+          selectedItemColor: Color.fromARGB(255, 251, 134, 50),
         ),
       ),
     );
