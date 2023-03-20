@@ -102,7 +102,11 @@ class Page2 extends StatelessWidget {
           child: PostList(
         items: List<Post>.generate(
           1000,
-          (i) => Post(title: "Item $i"),
+          (i) => Post(
+            title: "Item $i",
+            discript:
+                "Lorem adasdasdasdasdasdasdasdsadsadasdasdssddsadasdasdasdasdsadsadsdsdsadsdasdasdsadsadsdsdsdadsasadsadasdaasdsadasdsa",
+          ),
         ),
       )),
     );
@@ -170,8 +174,9 @@ class PostList extends StatelessWidget {
 
 class Post extends StatelessWidget {
   String title;
+  String discript;
 
-  Post({super.key, required this.title});
+  Post({super.key, required this.title, required this.discript});
 
   @override
   Widget build(BuildContext context) {
@@ -199,14 +204,23 @@ class Post extends StatelessWidget {
         openBuilder: (context, action) {
           return Container(
             color: const Color.fromARGB(255, 79, 218, 236),
-            child: Center(
-              child: Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 30.0,
-                  color: Colors.black,
+            child: Stack(
+              children: [
+                Align(
+                  alignment: const Alignment(0, -0.8),
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 40.0,
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
-              ),
+                Align(
+                  alignment: const Alignment(0, -0.5),
+                  child: Text(discript),
+                )
+              ],
             ),
           );
         },
