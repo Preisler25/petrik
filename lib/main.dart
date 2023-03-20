@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Petrik',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.cyan,
       ),
       home: Scaffold(
         appBar: AppBar(
@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          selectedItemColor: Colors.blue,
+          selectedItemColor: const Color.fromARGB(255, 236, 147, 79),
         ),
       ),
     );
@@ -217,8 +217,11 @@ class Post extends StatelessWidget {
                   ),
                 ),
                 Align(
-                  alignment: const Alignment(0, -0.5),
-                  child: Text(discript),
+                  alignment: const Alignment(0, -0.6),
+                  child: Container(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Text(discript),
+                  ),
                 )
               ],
             ),
