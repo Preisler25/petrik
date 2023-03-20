@@ -302,6 +302,33 @@ class PostInner {
                 Align(
                   alignment: const Alignment(0, -0.5),
                   child: Text(description),
+                ),
+                const Align(
+                  alignment: Alignment(0.0, 0.9),
+                  child: Image(
+                    image: NetworkImage(
+                        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                  ),
+                ),
+                Align(
+                  alignment: const Alignment(0.9, -0.9),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      shape: const CircleBorder(),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'X',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
                 )
               ],
             ),
