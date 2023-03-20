@@ -17,20 +17,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late Future<PostInner> postInner;
-  int _selectedIndex = 0;
-  static final List<Widget> _widgetOptions = <Widget>[
-    const Page1(),
-    const Page2(),
-    const Page3(),
-    const Page4(),
-  ];
+  late Future<PostInner> futturePostInner;
 
   @override
   void initState() {
     super.initState();
-    postInner = fetchPostInner();
+    futturePostInner = fetchPostInner();
   }
+
+  int _selectedIndex = 0;
+  static final List<Widget> _widgetOptions = <Widget>[
+    const Page1(),
+    Page2(
+      futurePostInner: fetchPostInner(),
+    ),
+    const Page3(),
+    const Page4(),
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -103,24 +106,27 @@ class Page1 extends StatelessWidget {
 }
 
 class Page2 extends StatelessWidget {
-  const Page2({Key? key}) : super(key: key);
+  final Future<PostInner> futurePostInner;
+
+  const Page2({Key? key, required this.futurePostInner}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white10,
-      child: Center(
-          child: PostList(
-        items: List<Post>.generate(
-          1000,
-          (i) => Post(
-            title: "Item $i",
-            discript:
-                "Lorem adasdasdasdasdasdasdasdsadsadasdasdssddsadasdasdasdasdsadsadsdsdsadsdasdasdsadsadsdsdsdadsasadsadasdaasdsadasdsa",
-          ),
-        ),
-      )),
-    );
+        color: Colors.white10,
+        child: FutureBuilder<PostInner>(
+          future: futurePostInner,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Text(snapshot.data!.title);
+            } else if (snapshot.hasError) {
+              return Text('${snapshot.error}');
+            }
+
+            // By default, show a loading spinner.
+            return const CircularProgressIndicator();
+          },
+        ));
   }
 }
 
