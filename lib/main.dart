@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          selectedItemColor: Color.fromARGB(255, 251, 134, 50),
+          selectedItemColor: const Color.fromARGB(255, 236, 147, 79),
         ),
       ),
     );
