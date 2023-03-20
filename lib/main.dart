@@ -17,14 +17,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late Future<PostInner> futturePostInner;
-
-  @override
-  void initState() {
-    super.initState();
-    futturePostInner = fetchPostInner();
-  }
-
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     const Page1(),
