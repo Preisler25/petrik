@@ -262,6 +262,7 @@ class PostInner {
 
   @override
   Widget build(BuildContext context) {
+    double.infinity;
     return SizedBox(
       width: 200,
       height: 200,
