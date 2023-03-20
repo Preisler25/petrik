@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
+          type: BottomNavigationBarType.shifting,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.newspaper),
@@ -70,7 +70,8 @@ class _MyAppState extends State<MyApp> {
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          selectedItemColor: const Color.fromARGB(255, 236, 147, 79),
+          selectedItemColor: Color.fromARGB(255, 251, 148, 69),
+          unselectedItemColor: Color.fromARGB(207, 238, 158, 79),
         ),
       ),
     );
