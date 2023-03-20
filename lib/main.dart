@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:http/http.dart' as http;
@@ -14,6 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  late Future<PostInner> postInner;
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     const Page1(),
@@ -21,6 +25,12 @@ class _MyAppState extends State<MyApp> {
     const Page3(),
     const Page4(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    postInner = fetchPostInner();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -154,6 +164,8 @@ class Page4 extends StatelessWidget {
   }
 }
 
+//Util
+
 class PostList extends StatelessWidget {
   final List<Post> items;
 
@@ -226,6 +238,49 @@ class Post extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+//
+//
+//
+//
+//Api for post //
+//
+//
+//
+
+Future<PostInner> fetchPostInner() async {
+  final response = await http.get(Uri.parse('http://localhost:3000/api/posts'));
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return PostInner.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load album');
+  }
+}
+
+class PostInner {
+  final int id;
+  final String title;
+  final String description;
+
+  const PostInner({
+    required this.id,
+    required this.title,
+    required this.description,
+  });
+
+  factory PostInner.fromJson(Map<String, dynamic> json) {
+    return PostInner(
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
     );
   }
 }
