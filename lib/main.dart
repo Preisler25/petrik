@@ -105,20 +105,21 @@ class Page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.white10,
-        child: FutureBuilder<PostInner>(
-          future: futurePostInner,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Text(snapshot.data!.title);
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
-            }
+      color: Colors.white10,
+      child: FutureBuilder<PostInner>(
+        future: futurePostInner,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Text(snapshot.data!.title);
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
 
-            // By default, show a loading spinner.
-            return const CircularProgressIndicator();
-          },
-        ));
+          // By default, show a loading spinner.
+          return const CircularProgressIndicator();
+        },
+      ),
+    );
   }
 }
 
@@ -250,7 +251,8 @@ class Post extends StatelessWidget {
 //
 
 Future<PostInner> fetchPostInner() async {
-  final response = await http.get(Uri.parse('http://localhost:3000/api/posts'));
+  final response =
+      await http.get(Uri.parse('http://192.168.1.199:3000/api/posts'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
