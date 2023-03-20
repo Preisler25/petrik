@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
