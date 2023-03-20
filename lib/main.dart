@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   static final List<Widget> _widgetOptions = <Widget>[
     const Page1(),
     Page2(
-      futurePostInner: fetchPostInner(),
+      futurePostList: fetchPostListInner(),
     ),
     const Page3(),
     const Page4(),
@@ -98,21 +98,23 @@ class Page1 extends StatelessWidget {
 }
 
 class Page2 extends StatelessWidget {
-  final Future<PostInner> futurePostInner;
+  final Future<JsonPostList> futurePostList;
 
-  const Page2({Key? key, required this.futurePostInner}) : super(key: key);
+  const Page2({Key? key, required this.futurePostList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white10,
-      child: FutureBuilder<PostInner>(
-        future: futurePostInner,
+      child: FutureBuilder<JsonPostList>(
+        future: futurePostList,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Text(snapshot.data!.title);
+            debugPrint(snapshot.data!.posts.toString());
+            return Text('alma');
+            //return PostList(items: snapshot.data!.posts);
           } else if (snapshot.hasError) {
-            return Text('${snapshot.error}');
+            return Text("${snapshot.error}");
           }
 
           // By default, show a loading spinner.
@@ -250,18 +252,36 @@ class Post extends StatelessWidget {
 //
 //
 
-Future<PostInner> fetchPostInner() async {
+Future<JsonPostList> fetchPostListInner() async {
   final response =
       await http.get(Uri.parse('http://192.168.1.199:3000/api/posts'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
-    return PostInner.fromJson(jsonDecode(response.body));
+    debugPrint(response.body);
+    return JsonPostList.fromJson(jsonDecode(response.body));
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
     throw Exception('Failed to load album');
+  }
+}
+
+class JsonPostList {
+  final List<PostInner> posts;
+
+  JsonPostList({
+    required this.posts,
+  });
+
+  factory JsonPostList.fromJson(List<dynamic> parsedJson) {
+    List<PostInner> posts = <PostInner>[];
+    posts = parsedJson.map((i) => PostInner.fromJson(i)).toList();
+
+    return JsonPostList(
+      posts: posts,
+    );
   }
 }
 
