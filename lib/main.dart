@@ -1,5 +1,9 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +20,9 @@ class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     const Page1(),
-    const Page2(),
+    Page2(
+      futurePostList: fetchPostListInner(),
+    ),
     const Page3(),
     const Page4(),
   ];
@@ -92,23 +98,29 @@ class Page1 extends StatelessWidget {
 }
 
 class Page2 extends StatelessWidget {
-  const Page2({Key? key}) : super(key: key);
+  final Future<JsonPostList> futurePostList;
+
+  const Page2({Key? key, required this.futurePostList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white10,
       child: Center(
-          child: PostList(
-        items: List<Post>.generate(
-          1000,
-          (i) => Post(
-            title: "Item $i",
-            discript:
-                "Lorem adasdasdasdasdasdasdasdsadsadasdasdssddsadasdasdasdasdsadsadsdsdsadsdasdasdsadsadsdsdsdadsasadsadasdaasdsadasdsa",
-          ),
+        child: FutureBuilder<JsonPostList>(
+          future: futurePostList,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return PostList(items: snapshot.data!.posts);
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
+
+            // By default, show a loading spinner.
+            return const CircularProgressIndicator();
+          },
         ),
-      )),
+      ),
     );
   }
 }
@@ -153,8 +165,10 @@ class Page4 extends StatelessWidget {
   }
 }
 
+//Util
+
 class PostList extends StatelessWidget {
-  final List<Post> items;
+  final List<PostInner> items;
 
   const PostList({super.key, required this.items});
 
@@ -171,15 +185,84 @@ class PostList extends StatelessWidget {
     );
   }
 }
+//
+//
+//
+//
+//Api for post //
+//
+//
+//
 
-class Post extends StatelessWidget {
-  String title;
-  String discript;
+Future<JsonPostList> fetchPostListInner() async {
+  final response =
+      await http.get(Uri.parse('http://192.168.1.199:3000/api/posts'));
 
-  Post({super.key, required this.title, required this.discript});
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    debugPrint(response.body);
+    debugPrint(jsonDecode(response.body).toString());
+    return JsonPostList.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load album');
+  }
+}
+
+class JsonPostList {
+  final List<PostInner> posts;
+
+  JsonPostList({
+    required this.posts,
+  });
+
+  factory JsonPostList.fromJson(Map<String, dynamic> parsedJson) {
+    List<PostInner> posts = <PostInner>[];
+    debugPrint(parsedJson['posts'].toString());
+    posts = parsedJson['posts']
+        .map<PostInner>((json) => PostInner.fromJson(json))
+        .toList();
+
+    return JsonPostList(
+      posts: posts,
+    );
+  }
+
+  @override
+  String toString() {
+    return 'posts: $posts';
+  }
+}
+
+class PostInner {
+  final int id;
+  final String title;
+  final String description;
+
+  const PostInner({
+    required this.id,
+    required this.title,
+    required this.description,
+  });
+
+  factory PostInner.fromJson(Map<String, dynamic> json) {
+    return PostInner(
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+    );
+  }
+
+  @override
+  String toString() {
+    return 'id: $id, title: $title, description: $description';
+  }
 
   @override
   Widget build(BuildContext context) {
+    double.infinity;
     return SizedBox(
       width: 200,
       height: 200,
@@ -217,10 +300,38 @@ class Post extends StatelessWidget {
                   ),
                 ),
                 Align(
-                  alignment: const Alignment(0, -0.6),
-                  child: Container(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Text(discript),
+                  alignment: const Alignment(0, -0.5),
+                  child: Text(description),
+                ),
+                Align(
+                  alignment: const Alignment(0.0, 0.9),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: const Image(
+                      image: NetworkImage(
+                          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                      width: 200,
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: const Alignment(0.9, -0.9),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      shape: const CircleBorder(),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'X',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                 )
               ],
