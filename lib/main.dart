@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.cyan,
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Colors.black,
         ),
       ),
@@ -267,7 +267,6 @@ class PostInner {
     return 'id: $id, title: $title, description: $description, image: $image';
   }
 
-  @override
   Widget build(BuildContext context) {
     double.infinity;
     return SizedBox(
