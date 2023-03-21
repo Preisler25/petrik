@@ -39,9 +39,12 @@ class _MyAppState extends State<MyApp> {
       title: 'Petrik',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        primarySwatch: Colors.teal,
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: Colors.black,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Color.fromARGB(255, 0, 0, 0),
+          selectedItemColor: Color.fromARGB(255, 103, 255, 212),
+          unselectedItemColor: Color.fromARGB(112, 103, 255, 212),
         ),
       ),
       home: Scaffold(
@@ -52,7 +55,6 @@ class _MyAppState extends State<MyApp> {
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.shifting,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.newspaper),
@@ -73,8 +75,6 @@ class _MyAppState extends State<MyApp> {
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          selectedItemColor: Color.fromARGB(255, 251, 148, 69),
-          unselectedItemColor: Color.fromARGB(207, 238, 158, 79),
         ),
       ),
     );
@@ -87,13 +87,13 @@ class Page1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black87,
-      child: Center(
+      color: Colors.black,
+      child: const Center(
         child: Text(
           'Page 1',
           style: TextStyle(
             fontSize: 30.0,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ),
@@ -109,7 +109,7 @@ class Page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black87,
+      color: Colors.black,
       child: Center(
         child: FutureBuilder<JsonPostList>(
           future: futurePostList,
@@ -135,13 +135,13 @@ class Page3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black87,
-      child: Center(
+      color: Colors.black,
+      child: const Center(
         child: Text(
           'Page 3',
           style: TextStyle(
             fontSize: 30.0,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ),
@@ -155,13 +155,13 @@ class Page4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black87,
-      child: Center(
+      color: Colors.black,
+      child: const Center(
         child: Text(
           'Page 4',
           style: TextStyle(
             fontSize: 30.0,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ),
@@ -200,7 +200,7 @@ class PostList extends StatelessWidget {
 
 Future<JsonPostList> fetchPostListInner() async {
   final response =
-      await http.get(Uri.parse('http://192.168.228.202:3000/api/iksz'));
+      await http.get(Uri.parse('http://192.168.1.199:3000/api/iksz'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -277,7 +277,7 @@ class PostInner {
         closedShape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(6)),
         ),
-        closedColor: const Color.fromARGB(255, 79, 218, 236),
+        closedColor: const Color.fromARGB(255, 103, 255, 212),
         closedBuilder: (context, action) {
           return Align(
             alignment: const Alignment(0.0, 0.0),
@@ -292,7 +292,7 @@ class PostInner {
         },
         openBuilder: (context, action) {
           return Container(
-            color: const Color.fromARGB(255, 79, 218, 236),
+            color: const Color.fromARGB(255, 103, 255, 212),
             child: Stack(
               children: [
                 Align(
