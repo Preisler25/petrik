@@ -40,6 +40,9 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.cyan,
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: Colors.black,
+        ),
       ),
       home: Scaffold(
         appBar: AppBar(
@@ -84,7 +87,7 @@ class Page1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white10,
+      color: Colors.black87,
       child: Center(
         child: Text(
           'Page 1',
@@ -106,7 +109,7 @@ class Page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white10,
+      color: Colors.black87,
       child: Center(
         child: FutureBuilder<JsonPostList>(
           future: futurePostList,
@@ -132,7 +135,7 @@ class Page3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white10,
+      color: Colors.black87,
       child: Center(
         child: Text(
           'Page 3',
@@ -152,7 +155,7 @@ class Page4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white10,
+      color: Colors.black87,
       child: Center(
         child: Text(
           'Page 4',
@@ -197,7 +200,7 @@ class PostList extends StatelessWidget {
 
 Future<JsonPostList> fetchPostListInner() async {
   final response =
-      await http.get(Uri.parse('http://192.168.1.199:3000/api/posts'));
+      await http.get(Uri.parse('http://192.168.228.202:3000/api/posts'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -241,11 +244,13 @@ class PostInner {
   final int id;
   final String title;
   final String description;
+  final String? image;
 
   const PostInner({
     required this.id,
     required this.title,
     required this.description,
+    this.image,
   });
 
   factory PostInner.fromJson(Map<String, dynamic> json) {
@@ -253,12 +258,13 @@ class PostInner {
       id: json['id'],
       title: json['title'],
       description: json['description'],
+      image: json['image'],
     );
   }
 
   @override
   String toString() {
-    return 'id: $id, title: $title, description: $description';
+    return 'id: $id, title: $title, description: $description, image: $image';
   }
 
   @override
