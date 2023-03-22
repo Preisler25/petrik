@@ -244,13 +244,13 @@ class PostInner {
   final int id;
   final String title;
   final String description;
-  final String? image;
+  final String? imageURL;
 
   const PostInner({
     required this.id,
     required this.title,
     required this.description,
-    this.image,
+    this.imageURL,
   });
 
   factory PostInner.fromJson(Map<String, dynamic> json) {
@@ -258,7 +258,7 @@ class PostInner {
       id: json['id'],
       title: json['title'],
       description: json['description'],
-      image: json['image'],
+      imageURL: json['image'],
     );
   }
 
@@ -313,9 +313,8 @@ class PostInner {
                   alignment: const Alignment(0.0, 0.9),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(50),
-                    child: const Image(
-                      image: NetworkImage(
-                          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                    child: Image(
+                      image: NetworkImage('$imageURL'),
                       width: 200,
                     ),
                   ),
