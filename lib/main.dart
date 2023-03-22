@@ -200,7 +200,7 @@ class PostList extends StatelessWidget {
 
 Future<JsonPostList> fetchPostListInner() async {
   final response =
-      await http.get(Uri.parse('http://192.168.1.199:3000/api/iksz'));
+      await http.get(Uri.parse('http://192.168.228.202:3000/api/iksz'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -264,7 +264,7 @@ class PostInner {
 
   @override
   String toString() {
-    return 'id: $id, title: $title, description: $description, image: $image';
+    return 'id: $id, title: $title, description: $description, image: $imageURL';
   }
 
   Widget build(BuildContext context) {
