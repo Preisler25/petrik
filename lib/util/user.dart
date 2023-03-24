@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:petrik/const/appConst.dart';
 import 'package:flutter/gestures.dart';
@@ -21,7 +22,7 @@ class User {
     );
   }
 
-  Future<User> createUser(String name, String password) async {
+  Future<Bool> createUser(String name, String password) async {
     final response = await http.get(
         Uri.parse('${AppConstants.API_LOGIN}?name=$name&password=$password'));
 
@@ -29,8 +30,7 @@ class User {
       // If the server did return a 200 OK response,
       // then parse the JSON.
       debugPrint(response.body);
-      debugPrint(jsonDecode(response.body).toString());
-      return User.fromJson(jsonDecode(response.body));
+      return jsonDecode(response.body).status;
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
