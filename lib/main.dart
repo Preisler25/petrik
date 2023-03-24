@@ -344,6 +344,7 @@ class PostInner {
                     ),
                     onPressed: () {
                       Navigator.pop(context);
+                      //user creating itt van Matwe
                       User user1 = const User(name: "alma", password: "korte");
                       user1.createUser("name", "password");
                     },
