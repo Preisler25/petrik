@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:http/http.dart' as http;
+import 'package:petrik/const/appConst.dart';
 import 'package:petrik/pages/login.dart';
 import 'package:petrik/util/user.dart';
 
@@ -232,7 +233,7 @@ class PostList extends StatelessWidget {
 //
 
 Future<JsonPostList> fetchPostListInner() async {
-  final response = await http.get(Uri.parse('http://192.168.1.199/api/iksz'));
+  final response = await http.get(Uri.parse(AppConstants.API_IKSZ));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,

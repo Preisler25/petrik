@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:petrik/const/appConst.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class User {
@@ -18,16 +21,20 @@ class User {
     );
   }
 
-  Future<http.Response> createUser(String name, String password) async {
-    return http.post(
-      Uri.parse('http://192.168.1.199/api/login'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        'name': name,
-        'password': password,
-      }),
-    );
+  Future<User> createUser(String name, String password) async {
+    final response = await http.get(
+        Uri.parse('${AppConstants.API_LOGIN}?name=$name&password=$password'));
+
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      debugPrint(response.body);
+      debugPrint(jsonDecode(response.body).toString());
+      return User.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load user');
+    }
   }
 }
