@@ -19,6 +19,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
+
   static final List<Widget> _widgetOptions = <Widget>[
     const Page1(),
     Page2(
@@ -29,10 +30,26 @@ class _MyAppState extends State<MyApp> {
     const Page5(),
   ];
 
+  static final List<String> _titleList = [
+    'Petrik News',
+    'IKSZ',
+    'Órarend',
+    'Helyettesít',
+    'Fiók'
+  ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+
+    if (mounted) {
+      setState(() {
+        AppBar(
+          title: Text(_titleList[_selectedIndex]),
+        );
+      });
+    }
   }
 
   @override
@@ -51,7 +68,7 @@ class _MyAppState extends State<MyApp> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Petrik News'),
+          title: Text(_titleList[_selectedIndex]),
         ),
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),

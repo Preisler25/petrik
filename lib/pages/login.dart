@@ -10,7 +10,10 @@ class LoginForm extends StatelessWidget {
   final passwordController = TextEditingController();
 
   // sign in funkció (még nincs implementálva)
-  void signUserIn() {}
+  void signUserIn() {
+    print('username: ${usernameController.text}');
+    print('password: ${passwordController.text}');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +38,7 @@ class LoginForm extends StatelessWidget {
 
                 //legyen szép napod:)
                 Text(
-                  'Legyen szép napod!',
+                  'Legyen Szép Napod!',
                   style: TextStyle(
                       color: Colors.grey[100],
                       fontSize: 16,
