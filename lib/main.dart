@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:http/http.dart' as http;
 import 'package:petrik/pages/login.dart';
+import 'package:petrik/util/user.dart';
 
 void main() {
   runApp(const MyApp());
@@ -343,6 +344,8 @@ class PostInner {
                     ),
                     onPressed: () {
                       Navigator.pop(context);
+                      User user1 = const User(name: "alma", password: "korte");
+                      user1.createUser("name", "password");
                     },
                     child: const Text(
                       'X',
