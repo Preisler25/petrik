@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/components/button.dart';
 import 'package:petrik/components/textfield.dart';
+import 'package:petrik/util/user.dart';
+
+//MÁTÉNAK note: a login gombra létre hozzól egy User(name, password) objektumot, majd a User osztályban lévő createAlbum() metódusával elküldi a szervernek, a szerver pedig visszaküldi a választ, amit a login gombra létrehozott User objektum createUser() metódusával fogadunk el.
 
 class LoginForm extends StatelessWidget {
   LoginForm({super.key});

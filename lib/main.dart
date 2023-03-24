@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:http/http.dart' as http;
 import 'package:petrik/pages/login.dart';
+import 'package:petrik/util/user.dart';
 
 void main() {
   runApp(const MyApp());
@@ -221,6 +222,7 @@ class PostList extends StatelessWidget {
     );
   }
 }
+
 //
 //
 //
@@ -228,11 +230,9 @@ class PostList extends StatelessWidget {
 //Api for post //
 //
 //
-//
 
 Future<JsonPostList> fetchPostListInner() async {
-  final response =
-      await http.get(Uri.parse('http://192.168.228.202:3000/api/iksz'));
+  final response = await http.get(Uri.parse('http://192.168.1.199/api/iksz'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -361,6 +361,9 @@ class PostInner {
                     ),
                     onPressed: () {
                       Navigator.pop(context);
+                      //user creating itt van Matwe
+                      User user1 = const User(name: "alma", password: "korte");
+                      user1.createUser("name", "password");
                     },
                     child: const Text(
                       'X',
