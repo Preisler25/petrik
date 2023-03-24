@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:http/http.dart' as http;
+import 'package:petrik/pages/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +26,7 @@ class _MyAppState extends State<MyApp> {
     ),
     const Page3(),
     const Page4(),
+    const Page5(),
   ];
 
   void _onItemTapped(int index) {
@@ -49,7 +51,7 @@ class _MyAppState extends State<MyApp> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Petrik news'),
+          title: const Text('Petrik News'),
         ),
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
@@ -58,7 +60,7 @@ class _MyAppState extends State<MyApp> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.newspaper),
-              label: 'News',
+              label: 'Hírek',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.work),
@@ -69,9 +71,13 @@ class _MyAppState extends State<MyApp> {
               label: 'Órarend',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Helyettesítés',
+              icon: Icon(Icons.group_remove),
+              label: 'Helyettesít',
             ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle),
+              label: 'Fiók',
+            )
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
@@ -166,6 +172,15 @@ class Page4 extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class Page5 extends StatelessWidget {
+  const Page5({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return LoginForm();
   }
 }
 
