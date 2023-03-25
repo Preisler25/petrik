@@ -23,7 +23,7 @@ class User {
     );
   }
 
-  Future<Status> checkUser(String name, String password) async {
+  Future<Status> checkUser() async {
     final response = await http.get(
         Uri.parse('${AppConstants.API_LOGIN}?name=$name&password=$password'));
 
@@ -37,5 +37,10 @@ class User {
       // then throw an exception.
       throw Exception('Failed to load user');
     }
+  }
+
+  @override
+  String toString() {
+    return 'name: $name, password: $password';
   }
 }

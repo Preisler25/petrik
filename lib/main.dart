@@ -360,8 +360,9 @@ class PostInner {
                     onPressed: () {
                       Navigator.pop(context);
                       //user creating itt van Matwe
-                      User user1 = const User(name: "alma", password: "korte");
-                      Future<Status> data = user1.checkUser("name", "password");
+                      User user1 =
+                          const User(name: "name", password: "password");
+                      Future<Status> data = user1.checkUser();
                       data.then((value) => print(value.status));
                     },
                     child: const Text(

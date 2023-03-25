@@ -24,8 +24,9 @@ class LoginForm extends StatelessWidget {
     String name = usernameController.text;
     String password = passwordController.text;
     User user = User(name: name, password: password);
-    Status status = await user.checkUser(name, password);
-    if (status.status == "success") {
+    print(user.toString());
+    Status status = await user.checkUser();
+    if (status.status == true) {
       //Navigálás a home oldalra, ha a bejelentkezés sikeres
       Navigator.pushNamed(context, "/home");
     } else {

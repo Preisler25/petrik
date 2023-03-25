@@ -1,13 +1,13 @@
 import 'dart:ffi';
 
 class Status {
-  final String status;
+  final bool status;
 
   const Status({
     required this.status,
   });
 
-  factory Status.fromJson(Map<String, dynamic> json) {
+  factory Status.fromJson(Map<dynamic, dynamic> json) {
     return Status(
       status: json['status'],
     );
