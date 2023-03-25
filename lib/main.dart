@@ -274,16 +274,17 @@ class PostInner {
   final int id;
   final String title;
   final String description;
-  final String? imageURL;
+  final String imageURL;
 
   const PostInner({
     required this.id,
     required this.title,
     required this.description,
-    this.imageURL,
+    required this.imageURL,
   });
 
-  factory PostInner.fromJson(Map<String, dynamic> json) {
+  factory PostInner.fromJson(Map<dynamic, dynamic> json) {
+    print("-------------${json}-------------");
     return PostInner(
       id: json['id'],
       title: json['title'],
