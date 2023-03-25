@@ -5,6 +5,7 @@ import 'package:petrik/const/appConst.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:petrik/util/status.dart';
 
 class User {
   final String name;
@@ -22,7 +23,7 @@ class User {
     );
   }
 
-  Future<Map<String, dynamic>> createUser(String name, String password) async {
+  Future<Status> checkUser(String name, String password) async {
     final response = await http.get(
         Uri.parse('${AppConstants.API_LOGIN}?name=$name&password=$password'));
 
@@ -30,7 +31,7 @@ class User {
       // If the server did return a 200 OK response,
       // then parse the JSON.
       debugPrint(response.body);
-      return jsonDecode(response.body);
+      return Status.fromJson(jsonDecode(response.body));
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.

@@ -6,6 +6,7 @@ import 'package:animations/animations.dart';
 import 'package:http/http.dart' as http;
 import 'package:petrik/const/appConst.dart';
 import 'package:petrik/pages/login.dart';
+import 'package:petrik/util/status.dart';
 import 'package:petrik/util/user.dart';
 
 void main() {
@@ -364,9 +365,8 @@ class PostInner {
                       Navigator.pop(context);
                       //user creating itt van Matwe
                       User user1 = const User(name: "alma", password: "korte");
-                      Future<Map<String, dynamic>> data =
-                          user1.createUser("name", "password");
-                      data.then((value) => print(value));
+                      Future<Status> data = user1.checkUser("name", "password");
+                      data.then((value) => print(value.status));
                     },
                     child: const Text(
                       'X',
