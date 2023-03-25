@@ -364,7 +364,9 @@ class PostInner {
                       Navigator.pop(context);
                       //user creating itt van Matwe
                       User user1 = const User(name: "alma", password: "korte");
-                      user1.createUser("name", "password");
+                      Future<Map<String, dynamic>> data =
+                          user1.createUser("name", "password");
+                      data.then((value) => print(value));
                     },
                     child: const Text(
                       'X',

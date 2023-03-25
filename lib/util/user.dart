@@ -22,7 +22,7 @@ class User {
     );
   }
 
-  Future<Bool> createUser(String name, String password) async {
+  Future<Map<String, dynamic>> createUser(String name, String password) async {
     final response = await http.get(
         Uri.parse('${AppConstants.API_LOGIN}?name=$name&password=$password'));
 
@@ -30,7 +30,7 @@ class User {
       // If the server did return a 200 OK response,
       // then parse the JSON.
       debugPrint(response.body);
-      return jsonDecode(response.body).status;
+      return jsonDecode(response.body);
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
