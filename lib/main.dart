@@ -25,9 +25,7 @@ class _MyAppState extends State<MyApp> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const Page1(),
-    Page2(
-      futurePostList: fetchPostListInner(),
-    ),
+    Page2(),
     const Page3(),
     const Page4(),
     const Page5(),
@@ -128,12 +126,10 @@ class Page1 extends StatelessWidget {
 }
 
 class Page2 extends StatelessWidget {
-  final Future<JsonPostList> futurePostList;
-
-  const Page2({Key? key, required this.futurePostList}) : super(key: key);
-
+  const Page2({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final Future<JsonPostList> futurePostList = fetchPostListInner();
     return Container(
       color: Colors.black,
       child: Center(
