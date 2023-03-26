@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
+import 'package:petrik/util/logicLogReg.dart';
 
 class PostInner {
   final int id;
@@ -105,6 +106,7 @@ class PostInner {
                     ),
                     onPressed: () {
                       Navigator.pop(context);
+                      regUser('admin', 'admin', 'email', '9/NY');
                     },
                     child: const Text(
                       'X',
