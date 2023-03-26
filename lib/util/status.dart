@@ -1,16 +1,16 @@
 class Status {
   final bool status;
-  final String auth_token;
+  final String authToken;
 
   const Status({
     required this.status,
-    required this.auth_token,
+    required this.authToken,
   });
 
   factory Status.fromJson(Map<dynamic, dynamic> json) {
     return Status(
       status: json['status'],
-      auth_token: json['auth_token'],
+      authToken: json['auth_token'],
     );
   }
 }
