@@ -3,5 +3,5 @@ class AppConstants {
   static const String API_URL = '$Base_URL/api';
   static const String API_LOGIN = '$API_URL/login';
   static const String API_IKSZ = '$API_URL/iksz';
-  static const String API_REGISTER = '$API_URL/register';
+  static const String API_REG = '$API_URL/reg';
 }

@@ -8,18 +8,8 @@ import 'dart:convert';
 
 Future<Status> regUser(
     String name, String password, String email, String osztaly) async {
-  final response = await http.post(
-    Uri.parse('${AppConstants.API_REGISTER}?name=$name&password=$password'),
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-    body: jsonEncode(<String, String>{
-      'name': name,
-      'password': password,
-      'email': email,
-      'osztaly': osztaly,
-    }),
-  );
+  final response = await http.get(Uri.parse(
+      '${AppConstants.API_LOGIN}?name=$name&password=$password&email=$email&osztaly=$osztaly'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
