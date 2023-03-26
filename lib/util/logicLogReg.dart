@@ -9,7 +9,7 @@ import 'dart:convert';
 Future<Status> regUser(
     String name, String password, String email, String osztaly) async {
   final response = await http.get(Uri.parse(
-      '${AppConstants.API_LOGIN}?name=$name&password=$password&email=$email&osztaly=$osztaly'));
+      '${AppConstants.API_REG}?name=$name&password=$password&email=$email&osztaly=$osztaly'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
