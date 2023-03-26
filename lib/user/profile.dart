@@ -17,3 +17,7 @@ String getName() {
 String getClass() {
   return userProf.getClass();
 }
+
+User getUser() {
+  return userProf.getUser();
+}

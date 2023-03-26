@@ -23,6 +23,10 @@ class User {
     return osztaly;
   }
 
+  getUser() {
+    return this;
+  }
+
   factory User.fromJson(Map<String, dynamic> json) {
     if (json == null) {
       throw FormatException("Null JSON provided to User");
