@@ -1,9 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:petrik/pages/login.dart';
-import 'package:petrik/util/jsonPostList.dart';
-import 'package:petrik/components/postList.dart';
+import 'package:petrik/pages/ikszPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +18,7 @@ class _MyAppState extends State<MyApp> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const Page1(),
-    Page2(),
+    const IkszPage(),
     const Page3(),
     const Page4(),
     const Page5(),
@@ -115,32 +112,6 @@ class Page1 extends StatelessWidget {
             fontSize: 30.0,
             color: Colors.white,
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class Page2 extends StatelessWidget {
-  const Page2({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    final Future<JsonPostList> futurePostList = fetchPostListInner();
-    return Container(
-      color: Colors.black,
-      child: Center(
-        child: FutureBuilder<JsonPostList>(
-          future: futurePostList,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return PostList(items: snapshot.data!.posts);
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            }
-
-            // By default, show a loading spinner.
-            return const CircularProgressIndicator();
-          },
         ),
       ),
     );
