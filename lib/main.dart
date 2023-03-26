@@ -4,6 +4,7 @@ import 'package:petrik/pages/ikszPage.dart';
 import 'package:petrik/pages/newsPage.dart';
 import 'package:petrik/pages/orarendPage.dart';
 import 'package:petrik/pages/chPage.dart';
+import 'package:petrik/util/user.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  User userProf = User(name: '', osztaly: '');
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = <Widget>[
@@ -102,11 +104,11 @@ class _MyAppState extends State<MyApp> {
 }
 
 class Page1 extends StatelessWidget {
-  const Page1({Key? key}) : super(key: key);
+  const Page1({Key? key, user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return NewsPage();
+    return const NewsPage();
   }
 }
 

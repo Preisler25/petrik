@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NewsPage extends StatelessWidget {
-  const NewsPage({Key? key}) : super(key: key);
+  const NewsPage({Key? key, user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

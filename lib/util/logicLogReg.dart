@@ -9,7 +9,8 @@ import 'dart:convert';
 Future<Status> regUser(
     String name, String password, String email, String osztaly) async {
   final response = await http.post(
-    Uri.parse('${AppConstants.API_REGISTER}?name=$name&password=$password'),
+    Uri.parse(
+        '${AppConstants.API_REGISTER}?name=$name&password=$password&email=$email&osztaly=$osztaly'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },

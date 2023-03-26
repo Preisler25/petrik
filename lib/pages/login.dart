@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/components/button.dart';
 import 'package:petrik/components/textfield.dart';
-import 'package:petrik/util/user.dart';
 import 'package:petrik/util/status.dart';
 import 'package:petrik/util/logicLogReg.dart';
-
-import '../util/status.dart';
+import 'package:petrik/user/profile.dart';
 
 //MÁTÉNAK note: a login gombra létre hozzól egy User(name, password) objektumot, majd a User osztályban lévő checkUser() metódusával elküldi a szervernek, a szerver pedig visszaküldi a választ, amit a login gombra létrehozott User objektum checkUser() metódusával fogadunk el.
 
@@ -15,7 +13,9 @@ import '../util/status.dart';
 //  \~(*)~/
 
 class LoginForm extends StatelessWidget {
-  LoginForm({super.key});
+  LoginForm({
+    super.key,
+  });
 
   //controllerek
   final usernameController = TextEditingController();
@@ -27,6 +27,8 @@ class LoginForm extends StatelessWidget {
     String password = passwordController.text;
     Status status = await checkUser(name, password);
     if (status.status == true) {
+      setName(status.user!.name);
+      setClass(status.user!.osztaly);
       //Navigálás a home oldalra, ha a bejelentkezés sikeres
       Navigator.pushNamed(context, "/home");
     } else {
