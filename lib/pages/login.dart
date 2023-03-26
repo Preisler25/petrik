@@ -34,26 +34,70 @@ class LoginForm extends StatelessWidget {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text("Sikertelen bejelentkezés"),
-          content: Text("Hibás felhasználónév vagy jelszó"),
+          title: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.sentiment_dissatisfied,
+                color: Colors.white,
+                size: 50,
+              ),
+              SizedBox(height: 20),
+              Text(
+                "Sikertelen Bejelentkezés",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26.0,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+          content: Text(
+            "Hibás felhasználónév vagy jelszó",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18.0,
+            ),
+            textAlign: TextAlign.center,
+          ),
           actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text("OK"),
+            Container(
+              alignment: Alignment.center,
+              child: TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text(
+                  "OK",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    Color.fromARGB(255, 255, 255, 255),
+                  ),
+                  padding: MaterialStateProperty.all<EdgeInsets>(
+                    EdgeInsets.symmetric(horizontal: 135.0, vertical: 16.0),
+                  ),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      side: BorderSide(
+                        color: Color.fromARGB(31, 0, 0, 0),
+                        width: 2.0,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          backgroundColor: Color.fromARGB(255, 41, 172, 124),
-          titleTextStyle: TextStyle(
-            color: Colors.white,
-            fontSize: 20.0,
-          ),
-          contentTextStyle: TextStyle(
-            color: Colors.white,
-            fontSize: 16.0,
-          ),
+          backgroundColor: Color.fromARGB(255, 0, 214, 139),
         ),
       );
     }
