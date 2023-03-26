@@ -3,12 +3,14 @@ import 'package:animations/animations.dart';
 
 class PostInner {
   final int id;
+  final int free_spaces;
   final String title;
   final String description;
   final String? imageURL;
 
   const PostInner({
     required this.id,
+    required this.free_spaces,
     required this.title,
     required this.description,
     this.imageURL,
@@ -18,6 +20,7 @@ class PostInner {
   factory PostInner.fromJson(Map<dynamic, dynamic> json) {
     return PostInner(
       id: json['id'],
+      free_spaces: json['free_spaces'],
       title: json['title'],
       description: json['description'],
       imageURL: json['img_url'],
