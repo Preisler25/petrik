@@ -19,7 +19,7 @@ class LoginForm extends StatelessWidget {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // sign in funkció (még nincs implementálva)
+  // sign in funkció
   void signUserIn(BuildContext context) async {
     String name = usernameController.text;
     String password = passwordController.text;
@@ -42,6 +42,18 @@ class LoginForm extends StatelessWidget {
               child: Text("OK"),
             ),
           ],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          backgroundColor: Color.fromARGB(255, 41, 172, 124),
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 20.0,
+          ),
+          contentTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
+          ),
         ),
       );
     }
