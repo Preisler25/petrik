@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:petrik/components/button.dart';
 import 'package:petrik/components/textfield.dart';
 import 'package:petrik/util/user.dart';
+import 'package:petrik/util/status.dart';
+import 'package:petrik/util/logicLogReg.dart';
 
 import '../util/status.dart';
 
@@ -23,9 +25,7 @@ class LoginForm extends StatelessWidget {
   void signUserIn(BuildContext context) async {
     String name = usernameController.text;
     String password = passwordController.text;
-    User user = User(name: name, password: password);
-    print(user.toString());
-    Status status = await user.checkUser();
+    Status status = await checkUser(name, password);
     if (status.status == true) {
       //Navigálás a home oldalra, ha a bejelentkezés sikeres
       Navigator.pushNamed(context, "/home");
