@@ -38,9 +38,6 @@ class _LoginFormState extends State<LoginForm> {
       isLoading = false;
     });
     if (status.status == true) {
-      setName(status.user!.name);
-      setClass(status.user!.osztaly);
-
       //Navigálás a home oldalra, ha a bejelentkezés sikeres
       Navigator.pushNamed(context, "/home");
     } else {
