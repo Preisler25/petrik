@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/components/button.dart';
 import 'package:petrik/components/textfield.dart';
+import 'package:petrik/user/profile.dart';
+import 'package:petrik/util/user.dart';
 import 'package:petrik/util/status.dart';
 import 'package:petrik/util/logicLogReg.dart';
-import 'package:petrik/user/profile.dart';
+
+import '../util/status.dart';
 
 //MÁTÉNAK note: a login gombra létre hozzól egy User(name, password) objektumot, majd a User osztályban lévő checkUser() metódusával elküldi a szervernek, a szerver pedig visszaküldi a választ, amit a login gombra létrehozott User objektum checkUser() metódusával fogadunk el.
 
@@ -12,11 +15,14 @@ import 'package:petrik/user/profile.dart';
 // ==( ^ )==
 //  \~(*)~/
 
-class LoginForm extends StatelessWidget {
-  LoginForm({
-    super.key,
-  });
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
 
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
   //controllerek
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -25,7 +31,13 @@ class LoginForm extends StatelessWidget {
   void signUserIn(BuildContext context) async {
     String name = usernameController.text;
     String password = passwordController.text;
+    setState(() {
+      isLoading = true;
+    });
     Status status = await checkUser(name, password);
+    setState(() {
+      isLoading = false;
+    });
     if (status.status == true) {
       setName(status.user!.name);
       setClass(status.user!.osztaly);
@@ -71,14 +83,14 @@ class LoginForm extends StatelessWidget {
                 child: Text(
                   "OK",
                   style: TextStyle(
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: Colors.black,
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                    Color.fromARGB(255, 255, 255, 255),
+                    Colors.white,
                   ),
                   padding: MaterialStateProperty.all<EdgeInsets>(
                     EdgeInsets.symmetric(horizontal: 135.0, vertical: 16.0),
@@ -87,7 +99,7 @@ class LoginForm extends StatelessWidget {
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
                       side: BorderSide(
-                        color: Color.fromARGB(31, 0, 0, 0),
+                        color: Colors.black.withOpacity(0.12),
                         width: 2.0,
                       ),
                     ),
@@ -99,108 +111,115 @@ class LoginForm extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          backgroundColor: Color.fromARGB(255, 0, 214, 139),
+          backgroundColor: Color(0xFF00D68B),
         ),
       );
     }
   }
+
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 50),
-
-                // logo
-                const Icon(
-                  Icons.person_pin,
-                  size: 100,
-                  color: Color.fromARGB(255, 41, 172, 124),
-                ),
-
-                const SizedBox(height: 10),
-
-                //legyen szép napod:)
-                Text(
-                  'Legyen Szép Napod!',
-                  style: TextStyle(
-                      color: Colors.grey[100],
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
-                ),
-
-                const SizedBox(height: 25),
-
-                // username textfield
-                A_TextField(
-                  controller: usernameController,
-                  hintText: 'Felhasználónév',
-                  obscureText: false,
-                ),
-
-                const SizedBox(height: 10),
-
-                // password textfield
-                A_TextField(
-                  controller: passwordController,
-                  hintText: 'Jelszó',
-                  obscureText: true,
-                ),
-
-                const SizedBox(height: 10),
-
-                // forgot password?
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Elfelejtett jelszó?',
-                        style: TextStyle(color: Colors.grey[100]),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 25),
-
-                // sign in button
-                A_Button(
-                  onTap: () => signUserIn(context),
-                ),
-
-                const SizedBox(height: 50),
-
-                //regisztralj most
-                Row(
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Center(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    const SizedBox(height: 50),
+                    // logo
+                    const Icon(
+                      Icons.person_pin,
+                      size: 100,
+                      color: Color.fromARGB(255, 41, 172, 124),
+                    ),
+                    const SizedBox(height: 10),
+                    //legyen szép napod:)
                     Text(
-                      'Nincs fiókod?',
+                      'Legyen Szép Napod!',
                       style: TextStyle(
                         color: Colors.grey[100],
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    const Text(
-                      'Regisztrálj most!',
-                      style: TextStyle(
-                        color: Colors.blue,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    const SizedBox(height: 25),
+                    // username textfield
+                    A_TextField(
+                      controller: usernameController,
+                      hintText: 'Felhasználónév',
+                      obscureText: false,
+                    ),
+                    const SizedBox(height: 10),
+                    // password textfield
+                    A_TextField(
+                      controller: passwordController,
+                      hintText: 'Jelszó',
+                      obscureText: true,
+                    ),
+                    const SizedBox(height: 10),
+                    // forgot password?
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            'Elfelejtett jelszó?',
+                            style: TextStyle(color: Colors.grey[100]),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 25),
+                    // sign in button
+                    A_Button(
+                      onTap: () {
+                        setState(() {
+                          isLoading = true;
+                        });
+                        signUserIn(context);
+                      },
+                    ),
+                    const SizedBox(height: 50),
+                    //regisztralj most
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Nincs fiókod?',
+                          style: TextStyle(
+                            color: Colors.grey[100],
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        const Text(
+                          'Regisztrálj most!',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    )
                   ],
-                )
-              ],
+                ),
+              ),
             ),
-          ),
+            isLoading
+                ? Container(
+                    color: Colors.black.withOpacity(0.5),
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                : Container(),
+          ],
         ),
       ),
     );
