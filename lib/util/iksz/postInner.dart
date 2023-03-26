@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
-import 'package:petrik/util/logicLogReg.dart';
 
 class PostInner {
   final int id;
