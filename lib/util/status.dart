@@ -12,7 +12,7 @@ class Status {
   factory Status.fromJson(Map<dynamic, dynamic> json) {
     return Status(
       status: json['status'],
-      user: User.fromJson(json['user']),
+      user: json['user'] == null ? null : User.fromJson(json['user']),
     );
   }
 }

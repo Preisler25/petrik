@@ -8,6 +8,9 @@ class User {
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
+    if (json == null) {
+      throw FormatException("Null JSON provided to User");
+    }
     return User(
       name: json['name'],
       osztaly: json['osztaly'],
