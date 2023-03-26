@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:petrik/components/button.dart';
 import 'package:petrik/components/textfield.dart';
 import 'package:petrik/user/profile.dart';
-import 'package:petrik/util/user.dart';
 import 'package:petrik/util/status.dart';
 import 'package:petrik/util/logicLogReg.dart';
-
-import '../util/status.dart';
 
 //MÁTÉNAK note: a login gombra létre hozzól egy User(name, password) objektumot, majd a User osztályban lévő checkUser() metódusával elküldi a szervernek, a szerver pedig visszaküldi a választ, amit a login gombra létrehozott User objektum checkUser() metódusával fogadunk el.
 
