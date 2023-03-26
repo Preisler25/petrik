@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:petrik/util/postInner.dart';
+import 'package:petrik/util/iksz/postInner.dart';
 import 'package:http/http.dart' as http;
 
-import '../const/appConst.dart';
+import '../../const/appConst.dart';
 
 //this class is used to store the posts array from the fetched json object
 

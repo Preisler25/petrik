@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:petrik/util/postInner.dart';
+import 'package:petrik/util/iksz/postInner.dart';
 
 //this is just a visualizator for the postInner list which is fetched from the api (in the JsonPostList class)
 

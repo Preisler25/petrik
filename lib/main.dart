@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/pages/login.dart';
 import 'package:petrik/pages/ikszPage.dart';
+import 'package:petrik/pages/newsPage.dart';
+import 'package:petrik/pages/orarendPage.dart';
+import 'package:petrik/pages/chPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +21,7 @@ class _MyAppState extends State<MyApp> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const Page1(),
-    const IkszPage(),
+    const Page2(),
     const Page3(),
     const Page4(),
     const Page5(),
@@ -103,18 +106,16 @@ class Page1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      child: const Center(
-        child: Text(
-          'Page 1',
-          style: TextStyle(
-            fontSize: 30.0,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
+    return NewsPage();
+  }
+}
+
+class Page2 extends StatelessWidget {
+  const Page2({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const IkszPage();
   }
 }
 
@@ -123,18 +124,7 @@ class Page3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      child: const Center(
-        child: Text(
-          'Page 3',
-          style: TextStyle(
-            fontSize: 30.0,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
+    return OrarendPage();
   }
 }
 
@@ -143,18 +133,7 @@ class Page4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      child: const Center(
-        child: Text(
-          'Page 4',
-          style: TextStyle(
-            fontSize: 30.0,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
+    return ChPage();
   }
 }
 

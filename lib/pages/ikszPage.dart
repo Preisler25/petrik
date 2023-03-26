@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/components/postList.dart';
-import 'package:petrik/util/jsonPostList.dart';
+import 'package:petrik/util/iksz/jsonPostList.dart';
 
 class IkszPage extends StatelessWidget {
   const IkszPage({Key? key}) : super(key: key);
