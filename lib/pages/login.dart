@@ -37,12 +37,12 @@ class _LoginFormState extends State<LoginForm> {
       isLoading = false;
     });
     if (status.status == true) {
-      setName(status.user!.name);
-      setClass(status.user!.osztaly);
+      setName(status.user.name);
+      setClass(status.user.osztaly);
       //Navigálás a userpage oldalra, ha a bejelentkezés sikeres
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => UserPage(user: status.user!)),
+        MaterialPageRoute(builder: (context) => UserPage(user: status.user)),
       );
     } else {
       // Ha a bejelentkezés sikertelen, akkor egy alert dialog jelenik meg
