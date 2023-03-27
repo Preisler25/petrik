@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:petrik/pages/login.dart';
+import 'package:petrik/pages/loginPage.dart';
 import 'package:petrik/pages/ikszPage.dart';
 import 'package:petrik/pages/newsPage.dart';
 import 'package:petrik/pages/orarendPage.dart';

@@ -5,6 +5,7 @@ import 'package:petrik/pages/userPage.dart';
 import 'package:petrik/user/profile.dart';
 import 'package:petrik/util/status.dart';
 import 'package:petrik/util/logicLogReg.dart';
+import 'package:petrik/util/user.dart';
 
 //MÁTÉNAK note: a login gombra létre hozzól egy User(name, password) objektumot, majd a User osztályban lévő checkUser() metódusával elküldi a szervernek, a szerver pedig visszaküldi a választ, amit a login gombra létrehozott User objektum checkUser() metódusával fogadunk el.
 
@@ -39,10 +40,14 @@ class _LoginFormState extends State<LoginForm> {
     if (status.status == true) {
       setName(status.user.name);
       setClass(status.user.osztaly);
+
+      User user = getUser();
       //Navigálás a userpage oldalra, ha a bejelentkezés sikeres
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => UserPage(user: status.user)),
+        MaterialPageRoute(
+          builder: (context) => UserPage(user: user),
+        ),
       );
     } else {
       // Ha a bejelentkezés sikertelen, akkor egy alert dialog jelenik meg
