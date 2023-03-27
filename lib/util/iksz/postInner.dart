@@ -105,7 +105,6 @@ class PostInner {
                     ),
                     onPressed: () {
                       Navigator.pop(context);
-                      regUser("admin", "admin", "test@gmail.com", "9NY");
                     },
                     child: const Text(
                       'X',

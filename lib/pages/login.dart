@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/components/button.dart';
 import 'package:petrik/components/textfield.dart';
+import 'package:petrik/pages/userPage.dart';
 import 'package:petrik/user/profile.dart';
 import 'package:petrik/util/status.dart';
 import 'package:petrik/util/logicLogReg.dart';
@@ -38,8 +39,11 @@ class _LoginFormState extends State<LoginForm> {
     if (status.status == true) {
       setName(status.user!.name);
       setClass(status.user!.osztaly);
-      //Navigálás a home oldalra, ha a bejelentkezés sikeres
-      Navigator.pushNamed(context, "/home");
+      //Navigálás a userpage oldalra, ha a bejelentkezés sikeres
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => UserPage(user: status.user!)),
+      );
     } else {
       // Ha a bejelentkezés sikertelen, akkor egy alert dialog jelenik meg
       showDialog(
@@ -90,7 +94,7 @@ class _LoginFormState extends State<LoginForm> {
                     Colors.white,
                   ),
                   padding: MaterialStateProperty.all<EdgeInsets>(
-                    EdgeInsets.symmetric(horizontal: 135.0, vertical: 16.0),
+                    EdgeInsets.symmetric(horizontal: 48.0, vertical: 16.0),
                   ),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
