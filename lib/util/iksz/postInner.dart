@@ -30,7 +30,7 @@ class PostInner {
   //to print the Post object
   @override
   String toString() {
-    return 'id: $id, title: $title, description: $description, image: $imageURL';
+    return 'id: $id, title: $title, free_space: $free_spaces description: $description, image: $imageURL';
   }
 
   //view of the post
