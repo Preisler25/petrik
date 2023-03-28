@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/util/user.dart';
+import 'package:petrik/user/profile.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -13,6 +14,8 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    User user = getUser();
+
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: Column(
@@ -24,7 +27,7 @@ class ProfilePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Szia, {user.name}!',
+                  'Szia, ${user.name}!',
                   style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                 ),
                 IconButton(
@@ -38,7 +41,7 @@ class ProfilePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
-              'A te osztályod: {user.osztaly}',
+              'A te osztályod: ${user.osztaly}',
               style: TextStyle(fontSize: 18.0, color: Colors.grey[600]),
             ),
           ),

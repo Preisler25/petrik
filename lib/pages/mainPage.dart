@@ -7,8 +7,7 @@ import 'package:petrik/pages/orarendPage.dart';
 import 'package:petrik/pages/chPage.dart';
 
 class MainPage extends StatefulWidget {
-  final User user;
-  const MainPage({Key? key, required this.user}) : super(key: key);
+  const MainPage({Key? key}) : super(key: key);
 
   void _handleLogout(BuildContext context) {
     // Here implement the logic to log out the user
@@ -128,7 +127,7 @@ class Page3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OrarendPage();
+    return const OrarendPage();
   }
 }
 
@@ -137,7 +136,7 @@ class Page4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChPage();
+    return const ChPage();
   }
 }
 
@@ -146,6 +145,6 @@ class Page5 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProfilePage();
+    return const ProfilePage();
   }
 }
