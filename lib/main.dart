@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petrik/pages/loginORregister.dart';
 import 'package:petrik/pages/loginPage.dart';
 
 void main() {
@@ -27,7 +28,7 @@ class _MyAppState extends State<MyApp> {
           unselectedItemColor: Color.fromARGB(112, 103, 255, 212),
         ),
       ),
-      home: const LoginPage(),
+      home: const LoginOrRegisterPage(),
     );
   }
 }
@@ -37,6 +38,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LoginForm();
+    return const LoginOrRegisterPage();
   }
 }

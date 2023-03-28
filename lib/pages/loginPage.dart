@@ -16,7 +16,8 @@ import 'package:petrik/util/user.dart';
 //  \~(*)~/
 
 class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+  final Function()? onTap;
+  const LoginForm({super.key, required this.onTap});
 
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -189,7 +190,7 @@ class _LoginFormState extends State<LoginForm> {
                         ),
                         const SizedBox(width: 4),
                         GestureDetector(
-                          onTap: ,
+                          onTap: widget.onTap,
                           child: const Text(
                             'Regisztrálj most!',
                             style: TextStyle(

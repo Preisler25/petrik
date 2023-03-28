@@ -14,7 +14,8 @@ import 'package:petrik/util/user.dart';
 //  \~(*)~/
 
 class RegisterForm extends StatefulWidget {
-  const RegisterForm({super.key});
+  final Function()? onTap;
+  const RegisterForm({super.key, required this.onTap});
 
   @override
   State<RegisterForm> createState() => _RegisterFormState();
@@ -26,7 +27,7 @@ class _RegisterFormState extends State<RegisterForm> {
   final passwordController = TextEditingController();
 
   // sign up funkció
-  void signUserUp(BuildContext context) async {
+  /* void signUserUp(BuildContext context) async {
     String name = usernameController.text.trim();
     String password = passwordController.text.trim();
 
@@ -102,7 +103,7 @@ class _RegisterFormState extends State<RegisterForm> {
         ),
       );
     }
-  }
+  } */
 
   bool isLoading = false;
 
@@ -178,7 +179,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         setState(() {
                           isLoading = true;
                         });
-                        signUserUp(context);
+                        /* signUserUp(context); */
                       },
                     ),
                     const SizedBox(height: 50),
