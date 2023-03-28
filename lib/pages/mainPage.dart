@@ -27,6 +27,7 @@ class _MainState extends State<MainPage> {
     const Page2(),
     const Page3(),
     const Page4(),
+    const Page5(user: user),
   ];
 
   static final List<String> _titleList = [
@@ -136,5 +137,15 @@ class Page4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const ChPage();
+  }
+}
+
+class Page5 extends StatelessWidget {
+  final User user;
+  const Page5({Key? key, required this.user}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const AccountPage(user: user);
   }
 }
