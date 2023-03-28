@@ -1,16 +1,32 @@
 import 'dart:async';
-
+import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:petrik/util/iksz/jsonPostList.dart';
+import '../../const/appConst.dart';
 import 'package:petrik/util/message.dart';
 import 'package:petrik/util/status.dart';
-import 'package:petrik/const/appConst.dart';
 import 'package:flutter/material.dart';
 import 'package:petrik/util/user.dart';
-import 'dart:convert';
+
+Future<JsonPostList> fetchPostListInner(User user) async {
+  //the responese will be a json object which has a property called posts, which is an array of posts
+  //{posts: [{id: 1, title: "title1", description: "description1", img_url: "url1"}, {id: 2, title: "title2", description: "description2", img_url: "url2"}]
+  final response = await http.get(
+    Uri.parse('${AppConstants.API_JOIN}?name=${user.name}'),
+  );
+  //now we are testing if the response is ok
+  if (response.statusCode == 200) {
+    //now we are creating a JsonPostList object from the response body, this is done by the JsonPostList.fromJson method
+    return JsonPostList.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to load posts');
+  }
+}
 
 Future<Message> joinIksz(User user) async {
   final response = await http.get(
-      Uri.parse('${AppConstants.API_JOIN}?name=${user.name}&key=${user.key}'));
+    Uri.parse('${AppConstants.API_JOIN}?name=${user.name}&key=${user.key}'),
+  );
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -26,7 +42,7 @@ Future<Message> joinIksz(User user) async {
   }
 }
 
-Future<Status> regUser(
+Future<Message> regUser(
     String name, String password, String email, String osztaly) async {
   final response = await http.get(Uri.parse(
       '${AppConstants.API_REG}?name=$name&password=$password&email=$email&osztaly=$osztaly'));
@@ -35,7 +51,7 @@ Future<Status> regUser(
     // If the server did return a 200 OK response,
     // then parse the JSON.
     debugPrint(response.body);
-    return Status.fromJson(jsonDecode(response.body));
+    return Message.fromJson(jsonDecode(response.body));
   } else if (response.statusCode == 409) {
     // If the server did not return a 200 OK response,
     // then throw an exception.
