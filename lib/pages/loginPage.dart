@@ -40,12 +40,11 @@ class _LoginFormState extends State<LoginForm> {
     if (status.status == true) {
       setUser(status.user);
 
-      User user = getUser();
       //Navigálás a userpage oldalra, ha a bejelentkezés sikeres
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => MainPage(user: user),
+          builder: (context) => MainPage(),
         ),
       );
     } else {
