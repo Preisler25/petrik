@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petrik/pages/profilePage.dart';
 import 'package:petrik/util/user.dart';
 import 'package:petrik/pages/ikszPage.dart';
 import 'package:petrik/pages/newsPage.dart';
@@ -21,8 +22,6 @@ class MainPage extends StatefulWidget {
 
 class _MainState extends State<MainPage> {
   int _selectedIndex = 0;
-
-  //can you create a list of widgets here? and then use that list in the bottom navigation bar? but i need to use my User user to one of the pages constructor
 
   static final List<Widget> _widgetOptions = <Widget>[
     const Page1(),
@@ -111,7 +110,7 @@ class Page1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const NewsPage();
+    return NewsPage();
   }
 }
 
@@ -129,7 +128,7 @@ class Page3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const OrarendPage();
+    return OrarendPage();
   }
 }
 
@@ -138,7 +137,7 @@ class Page4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ChPage();
+    return ChPage();
   }
 }
 
@@ -147,6 +146,6 @@ class Page5 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ChPage();
+    return ProfilePage();
   }
 }
