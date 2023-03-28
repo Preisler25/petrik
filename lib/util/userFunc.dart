@@ -1,10 +1,30 @@
 import 'dart:async';
 
 import 'package:http/http.dart' as http;
+import 'package:petrik/util/message.dart';
 import 'package:petrik/util/status.dart';
 import 'package:petrik/const/appConst.dart';
 import 'package:flutter/material.dart';
+import 'package:petrik/util/user.dart';
 import 'dart:convert';
+
+Future<Message> joinIksz(User user) async {
+  final response = await http.get(
+      Uri.parse('${AppConstants.API_JOIN}?name=${user.name}&key=${user.key}'));
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    debugPrint(response.body);
+    return Message.fromJson(jsonDecode(response.body));
+  } else if (response.statusCode == 409) {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('User already exists');
+  } else {
+    throw Exception('Failed to register user');
+  }
+}
 
 Future<Status> regUser(
     String name, String password, String email, String osztaly) async {
