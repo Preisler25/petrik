@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/components/button.dart';
 import 'package:petrik/components/textfield.dart';
+import 'package:petrik/components/dialog.dart';
 import 'package:petrik/pages/mainPage.dart';
 import 'package:petrik/user/profile.dart';
 import 'package:petrik/util/status.dart';
@@ -28,8 +29,52 @@ class _LoginFormState extends State<LoginForm> {
 
   // sign in funkció
   void signUserIn(BuildContext context) async {
-    String name = usernameController.text;
-    String password = passwordController.text;
+    String name = usernameController.text.trim();
+    String password = passwordController.text.trim();
+
+    // Check if username is valid (not empty and the no special characters)
+    if (name.isEmpty || !name.contains(RegExp(r'^[a-zA-Z0-9]+$'))) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Invalid Username'),
+          content: const Text(
+            'A felhasználónév nem tartalmazhat speciális karaktereket.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+
+    // Check if password is valid
+    /*  if (password.isEmpty ||
+        password.length < 6 ||
+        !password.contains(RegExp(r'\d')) ||
+        !password[0].toUpperCase().contains(RegExp(r'[A-Z]'))) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Invalid Password'),
+          content: const Text(
+            'A jelszónak legalább 6 karakter hosszúnak kell lennie,legalább egy számot és egy nagy kezdőbetűt kell tartalmaznia.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+      return;
+    } */
+
     setState(() {
       isLoading = true;
     });
@@ -51,74 +96,11 @@ class _LoginFormState extends State<LoginForm> {
       );
     } else {
       // Ha a bejelentkezés sikertelen, akkor egy alert dialog jelenik meg
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.sentiment_dissatisfied,
-                color: Colors.white,
-                size: 50,
-              ),
-              SizedBox(height: 20),
-              Text(
-                "Sikertelen Bejelentkezés",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 26.0,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-          content: Text(
-            "Hibás felhasználónév vagy jelszó",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18.0,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          actions: [
-            Container(
-              alignment: Alignment.center,
-              child: TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(
-                  "OK",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    Colors.white,
-                  ),
-                  padding: MaterialStateProperty.all<EdgeInsets>(
-                    EdgeInsets.symmetric(horizontal: 48.0, vertical: 16.0),
-                  ),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      side: BorderSide(
-                        color: Colors.black.withOpacity(0.12),
-                        width: 2.0,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          backgroundColor: Color(0xFF00D68B),
-        ),
+      A_Dialog(
+        title: "Sikertelen Bejelentkezés",
+        content: "Hibás felhasználónév vagy jelszó",
+        onPressed: () => Navigator.pop(context),
+        icon: Icons.sentiment_dissatisfied,
       );
     }
   }
