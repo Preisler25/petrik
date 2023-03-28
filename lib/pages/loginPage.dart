@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/components/button.dart';
 import 'package:petrik/components/textfield.dart';
-import 'package:petrik/pages/userPage.dart';
+import 'package:petrik/pages/mainPage.dart';
 import 'package:petrik/user/profile.dart';
 import 'package:petrik/util/status.dart';
 import 'package:petrik/util/logicLogReg.dart';
@@ -46,7 +46,7 @@ class _LoginFormState extends State<LoginForm> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => UserPage(user: user),
+          builder: (context) => MainPage(user: user),
         ),
       );
     } else {
