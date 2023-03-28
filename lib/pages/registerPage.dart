@@ -8,27 +8,25 @@ import 'package:petrik/util/status.dart';
 import 'package:petrik/util/serverFunc.dart';
 import 'package:petrik/util/user.dart';
 
-//MÁTÉNAK note: a login gombra létre hozzól egy User(name, password) objektumot, majd a User osztályban lévő checkUser() metódusával elküldi a szervernek, a szerver pedig visszaküldi a választ, amit a login gombra létrehozott User objektum checkUser() metódusával fogadunk el.
-
 //   /\_/\
 //  ( o o )
 // ==( ^ )==
 //  \~(*)~/
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+class RegisterForm extends StatefulWidget {
+  const RegisterForm({super.key});
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<RegisterForm> createState() => _RegisterFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _RegisterFormState extends State<RegisterForm> {
   //controllerek
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // sign in funkció
-  void signUserIn(BuildContext context) async {
+  // sign up funkció
+  void signUserUp(BuildContext context) async {
     String name = usernameController.text.trim();
     String password = passwordController.text.trim();
 
@@ -78,7 +76,7 @@ class _LoginFormState extends State<LoginForm> {
     setState(() {
       isLoading = true;
     });
-    Status status = await checkUser(name, password);
+    Status status = await regUser(name, password);
     setState(() {
       isLoading = false;
     });
@@ -120,17 +118,17 @@ class _LoginFormState extends State<LoginForm> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 50),
+                    const SizedBox(height: 25),
                     // logo
                     const Icon(
                       Icons.person_pin,
-                      size: 100,
+                      size: 50,
                       color: Color.fromARGB(255, 41, 172, 124),
                     ),
                     const SizedBox(height: 10),
                     //legyen szép napod:)
                     Text(
-                      'Legyen Szép Napod!',
+                      'Ideje regisztrálnod!',
                       style: TextStyle(
                         color: Colors.grey[100],
                         fontSize: 16,
@@ -152,6 +150,13 @@ class _LoginFormState extends State<LoginForm> {
                       obscureText: true,
                     ),
                     const SizedBox(height: 10),
+                    //confirm password textfield
+                    A_TextField(
+                      controller: passwordController,
+                      hintText: 'Jelszó megerősítése',
+                      obscureText: true,
+                    ),
+                    const SizedBox(height: 10),
                     // forgot password?
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -168,30 +173,30 @@ class _LoginFormState extends State<LoginForm> {
                     const SizedBox(height: 25),
                     // sign in button
                     A_Button(
-                      text: 'Bejelentkezés',
+                      text: "Regisztráció",
                       onTap: () {
                         setState(() {
                           isLoading = true;
                         });
-                        signUserIn(context);
+                        signUserUp(context);
                       },
                     ),
                     const SizedBox(height: 50),
-                    //regisztralj most
+                    //jelentkezz be
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Nincs fiókod?',
+                          'Van már fiókod?',
                           style: TextStyle(
                             color: Colors.grey[100],
                           ),
                         ),
                         const SizedBox(width: 4),
                         GestureDetector(
-                          onTap: ,
+                          onTap: widget.onTap,
                           child: const Text(
-                            'Regisztrálj most!',
+                            'Jelentkezz be!',
                             style: TextStyle(
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
