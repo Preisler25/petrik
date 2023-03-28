@@ -38,8 +38,7 @@ class _LoginFormState extends State<LoginForm> {
       isLoading = false;
     });
     if (status.status == true) {
-      setName(status.user.name);
-      setClass(status.user.osztaly);
+      setUser(status.user);
 
       User user = getUser();
       //Navigálás a userpage oldalra, ha a bejelentkezés sikeres

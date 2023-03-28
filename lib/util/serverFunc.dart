@@ -16,7 +16,9 @@ Future<JsonPostList> fetchPostListInner(User user) async {
   );
   //now we are testing if the response is ok
   if (response.statusCode == 200) {
+    print("-------------------------");
     print(response.body);
+    print("-------------------------");
     //now we are creating a JsonPostList object from the response body, this is done by the JsonPostList.fromJson method
     return JsonPostList.fromJson(jsonDecode(response.body));
   } else {

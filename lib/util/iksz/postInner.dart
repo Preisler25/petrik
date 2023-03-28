@@ -18,6 +18,7 @@ class PostInner {
 
   //this will crate a post object from a json object
   factory PostInner.fromJson(Map<dynamic, dynamic> json) {
+    print(json);
     return PostInner(
       id: json['id'],
       free_spaces: json['free_spaces'],
