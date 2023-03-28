@@ -16,13 +16,10 @@ class MainPage extends StatefulWidget {
     Navigator.popUntil(context, ModalRoute.withName('/login'));
   }
 
-  _MainState createState() => _MainState(user: user);
+  _MainState createState() => _MainState();
 }
 
 class _MainState extends State<MainPage> {
-  final User user;
-  _MainState({required this.user});
-
   int _selectedIndex = 0;
 
   //can you create a list of widgets here? and then use that list in the bottom navigation bar? but i need to use my User user to one of the pages constructor
@@ -146,11 +143,10 @@ class Page4 extends StatelessWidget {
 }
 
 class Page5 extends StatelessWidget {
-  final User user;
-  const Page5({Key? key, required this.user}) : super(key: key);
+  const Page5({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const AccountPage();
+    return const ChPage();
   }
 }
