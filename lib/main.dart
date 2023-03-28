@@ -37,6 +37,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LoginForm();
+    return const LoginForm();
   }
 }

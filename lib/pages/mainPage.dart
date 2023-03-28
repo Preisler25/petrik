@@ -108,7 +108,7 @@ class Page1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NewsPage();
+    return const NewsPage();
   }
 }
 
@@ -126,7 +126,7 @@ class Page3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OrarendPage();
+    return const OrarendPage();
   }
 }
 
@@ -135,6 +135,6 @@ class Page4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChPage();
+    return const ChPage();
   }
 }
