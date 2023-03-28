@@ -33,7 +33,7 @@ class _LoginFormState extends State<LoginForm> {
     String password = passwordController.text.trim();
 
     // Check if username is valid (not empty and the no special characters)
-    if (name.isEmpty || !name.contains(RegExp(r'^[a-zA-Z0-9]+$'))) {
+    /*   if (name.isEmpty || !name.contains(RegExp(r'^[a-zA-Z0-9]+$'))) {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -50,7 +50,7 @@ class _LoginFormState extends State<LoginForm> {
         ),
       );
       return;
-    }
+    } */
 
     // Check if password is valid
     /*  if (password.isEmpty ||
@@ -94,11 +94,14 @@ class _LoginFormState extends State<LoginForm> {
       );
     } else {
       // Ha a bejelentkezés sikertelen, akkor egy alert dialog jelenik meg
-      A_Dialog(
-        title: "Sikertelen Bejelentkezés",
-        content: "Hibás felhasználónév vagy jelszó",
-        onPressed: () => Navigator.pop(context),
-        icon: Icons.sentiment_dissatisfied,
+      showDialog(
+        context: context,
+        builder: (context) => A_Dialog(
+          title: "Sikertelen Bejelentkezés",
+          content: "Hibás felhasználónév vagy jelszó",
+          onPressed: () => Navigator.pop(context),
+          icon: Icons.sentiment_dissatisfied,
+        ),
       );
     }
   }
