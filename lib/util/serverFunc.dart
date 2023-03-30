@@ -6,15 +6,15 @@ import 'package:petrik/util/iksz/jsonPostList.dart';
 import '../../const/appConst.dart';
 import 'package:petrik/util/serverMessage.dart';
 import 'package:flutter/material.dart';
-import 'package:petrik/util/user.dart';
+import 'package:petrik/user/user.dart';
 import 'package:petrik/util/serverObj.dart';
 
 Future<JsonHelyettesitesList> fetchHelyettesitesList() async {
   final responser = await http.get(Uri.parse(AppConstants.API_HELYETTESITES));
   if (responser.statusCode == 200) {
-    print("-------------------------");
-    print(responser.body);
-    print("-------------------------");
+    if (responser.body == "") {
+      return JsonHelyettesitesList(helyettesites: []);
+    }
     return JsonHelyettesitesList.fromJson(jsonDecode(responser.body));
   } else {
     throw Exception('Failed to load posts');

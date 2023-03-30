@@ -1,4 +1,4 @@
-import 'package:petrik/util/user.dart';
+import 'package:petrik/user/user.dart';
 
 class ServerValidation {
   final bool status;

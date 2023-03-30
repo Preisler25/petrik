@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:petrik/util/user.dart';
+import 'package:petrik/user/user.dart';
 import 'package:petrik/user/profile.dart';
 
 class ProfilePage extends StatelessWidget {

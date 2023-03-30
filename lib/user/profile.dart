@@ -1,4 +1,4 @@
-import 'package:petrik/util/user.dart';
+import 'package:petrik/user/user.dart';
 
 User userProf = User(name: '', osztaly: '', key: '');
 
