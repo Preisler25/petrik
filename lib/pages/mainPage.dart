@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/pages/profilePage.dart';
-import 'package:petrik/util/user.dart';
+import 'package:petrik/user/user.dart';
 import 'package:petrik/pages/ikszPage.dart';
 import 'package:petrik/pages/newsPage.dart';
 import 'package:petrik/pages/orarendPage.dart';

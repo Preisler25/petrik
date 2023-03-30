@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
+import 'package:petrik/util/serverFunc.dart';
+
+import '../../user/profile.dart';
+import '../../user/user.dart';
+import '../serverMessage.dart';
 
 class PostInner {
   final int id;
@@ -81,6 +86,70 @@ class PostInner {
                 Align(
                   alignment: const Alignment(0, -0.5),
                   child: Text(description),
+                ),
+                Align(
+                  alignment: const Alignment(0, -0.3),
+                  child: Text('Free spaces: $free_spaces'),
+                ),
+                Align(
+                  alignment: const Alignment(0, -0.4),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      shape: const CircleBorder(),
+                    ),
+                    onPressed: () {
+                      User user = getUser();
+                      Future<Message> message = joinIksz(user, title);
+                      message.then((value) {
+                        if (value.status == true) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Sikeres csatlakozás!'),
+                                content: Text(value.message),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Error'),
+                                content: Text(value.message),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
+                      });
+                    },
+                    child: const Text(
+                      'Join',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
                 ),
                 Align(
                   alignment: const Alignment(0.0, 0.9),
