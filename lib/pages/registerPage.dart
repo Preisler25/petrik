@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/components/button.dart';
 import 'package:petrik/components/textfield.dart';
-import 'package:petrik/components/dialog.dart';
-import 'package:petrik/pages/mainPage.dart';
-import 'package:petrik/user/profile.dart';
-import 'package:petrik/util/status.dart';
-import 'package:petrik/util/serverFunc.dart';
-import 'package:petrik/util/user.dart';
 
 //   /\_/\
 //  ( o o )
@@ -77,6 +71,9 @@ class _RegisterFormState extends State<RegisterForm> {
     setState(() {
       isLoading = true;
     });
+
+    //Máté a regUser az nem status hanem message ==> petrik/lib/util/user.dart  ugyan ugy van a message nek is status paramétere message.status, de egyedül a loginnél küldünk vissza status status amit lehet most fixelek mert ezt igy le írva érzem hogy szar <3
+
     Status status = await regUser(name, password);
     setState(() {
       isLoading = false;

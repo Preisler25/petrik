@@ -1,16 +1,16 @@
 import 'package:petrik/util/user.dart';
 
-class Status {
+class ServerValidation {
   final bool status;
   final User user;
 
-  const Status({
+  const ServerValidation({
     required this.status,
     required this.user,
   });
 
-  factory Status.fromJson(Map<dynamic, dynamic> json) {
-    return Status(
+  factory ServerValidation.fromJson(Map<dynamic, dynamic> json) {
+    return ServerValidation(
       status: json['status'],
       user: User.fromJson(json['user']),
     );

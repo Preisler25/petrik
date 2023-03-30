@@ -4,9 +4,8 @@ import 'package:petrik/components/textfield.dart';
 import 'package:petrik/components/dialog.dart';
 import 'package:petrik/pages/mainPage.dart';
 import 'package:petrik/user/profile.dart';
-import 'package:petrik/util/status.dart';
 import 'package:petrik/util/serverFunc.dart';
-import 'package:petrik/util/user.dart';
+import 'package:petrik/util/serverObj.dart';
 
 //MÁTÉNAK note: a login gombra létre hozzól egy User(name, password) objektumot, majd a User osztályban lévő checkUser() metódusával elküldi a szervernek, a szerver pedig visszaküldi a választ, amit a login gombra létrehozott User objektum checkUser() metódusával fogadunk el.
 
@@ -79,7 +78,7 @@ class _LoginFormState extends State<LoginForm> {
     setState(() {
       isLoading = true;
     });
-    Status status = await checkUser(name, password);
+    ServerValidation status = await checkUser(name, password);
     setState(() {
       isLoading = false;
     });

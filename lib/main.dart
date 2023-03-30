@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/pages/loginORregister.dart';
-import 'package:petrik/pages/loginPage.dart';
 
 void main() {
   runApp(const MyApp());

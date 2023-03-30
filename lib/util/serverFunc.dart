@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:petrik/util/iksz/jsonPostList.dart';
 import '../../const/appConst.dart';
-import 'package:petrik/util/message.dart';
-import 'package:petrik/util/status.dart';
+import 'package:petrik/util/serverMessage.dart';
 import 'package:flutter/material.dart';
 import 'package:petrik/util/user.dart';
+import 'package:petrik/util/serverObj.dart';
 
 Future<JsonPostList> fetchPostListInner(User user) async {
   //the responese will be a json object which has a property called posts, which is an array of posts
@@ -64,7 +64,7 @@ Future<Message> regUser(
   }
 }
 
-Future<Status> checkUser(String name, String password) async {
+Future<ServerValidation> checkUser(String name, String password) async {
   final response = await http.get(
       Uri.parse('${AppConstants.API_LOGIN}?name=$name&password=$password'));
 
@@ -73,7 +73,7 @@ Future<Status> checkUser(String name, String password) async {
     // then parse the JSON.
     debugPrint(response.body);
 
-    return Status.fromJson(jsonDecode(response.body));
+    return ServerValidation.fromJson(jsonDecode(response.body));
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
