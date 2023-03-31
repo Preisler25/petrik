@@ -15,8 +15,6 @@ class LoginOrRegisterPage extends StatefulWidget {
 class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
   bool showLoginPage = true;
 
-  Future<Message> message = regUser('admin', 'admin', 'email', '9/ky');
-
   void togglePages() {
     setState(() {
       showLoginPage = !showLoginPage;
