@@ -81,11 +81,16 @@ class _RegisterFormState extends State<RegisterForm> {
       return;
     } */
 
+    print('alma');
+    print('name: $name, password: $password, email: $email, osztaly: $osztaly');
+
     setState(() {
       isLoading = true;
     });
 
     //Máté a regUser az nem status hanem message ==> petrik/lib/util/user.dart  ugyan ugy van a message nek is status paramétere message.status, de egyedül a loginnél küldünk vissza status status amit lehet most fixelek mert ezt igy le írva érzem hogy szar <3
+
+    print('name: $name, password: $password, email: $email, osztaly: $osztaly');
 
     ServerValidation status = await regUser(
       name,
@@ -93,6 +98,7 @@ class _RegisterFormState extends State<RegisterForm> {
       email,
       osztaly,
     );
+    print(status);
     setState(() {
       isLoading = false;
     });
@@ -192,7 +198,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         setState(() {
                           isLoading = true;
                         });
-                        /* signUserUp(context); */
+                        signUserUp(context);
                       },
                     ),
                     const SizedBox(height: 50),

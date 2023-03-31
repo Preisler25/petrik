@@ -74,6 +74,7 @@ Future<ServerValidation> regUser(
     // then throw an exception.
     throw Exception('User already exists');
   } else {
+    debugPrint(response.body);
     throw Exception('Failed to register user');
   }
 }
