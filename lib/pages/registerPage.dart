@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/components/button.dart';
 import 'package:petrik/components/textfield.dart';
+import 'package:petrik/util/serverObj.dart';
+
+import '../components/dialog.dart';
+import '../user/profile.dart';
+import '../util/serverFunc.dart';
+import '../util/serverMessage.dart';
+import 'mainPage.dart';
 
 //   /\_/\
 //  ( o o )
@@ -19,11 +26,17 @@ class _RegisterFormState extends State<RegisterForm> {
   //controllerek
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+  final password2Controller = TextEditingController();
+  final emailController = TextEditingController();
+  final osztalyController = TextEditingController();
 
   // sign up funkció
-  /* void signUserUp(BuildContext context) async {
+  void signUserUp(BuildContext context) async {
     String name = usernameController.text.trim();
     String password = passwordController.text.trim();
+    String password2 = password2Controller.text.trim();
+    String email = emailController.text.trim();
+    String osztaly = osztalyController.text.trim();
 
     // Check if username is valid (not empty and the no special characters)
     /*   if (name.isEmpty || !name.contains(RegExp(r'^[a-zA-Z0-9]+$'))) {
@@ -74,7 +87,12 @@ class _RegisterFormState extends State<RegisterForm> {
 
     //Máté a regUser az nem status hanem message ==> petrik/lib/util/user.dart  ugyan ugy van a message nek is status paramétere message.status, de egyedül a loginnél küldünk vissza status status amit lehet most fixelek mert ezt igy le írva érzem hogy szar <3
 
-    Status status = await regUser(name, password);
+    ServerValidation status = await regUser(
+      name,
+      password,
+      email,
+      osztaly,
+    );
     setState(() {
       isLoading = false;
     });
@@ -100,7 +118,7 @@ class _RegisterFormState extends State<RegisterForm> {
         ),
       );
     }
-  } */
+  }
 
   bool isLoading = false;
 
@@ -150,23 +168,21 @@ class _RegisterFormState extends State<RegisterForm> {
                     const SizedBox(height: 10),
                     //confirm password textfield
                     A_TextField(
-                      controller: passwordController,
+                      controller: password2Controller,
                       hintText: 'Jelszó megerősítése',
                       obscureText: true,
                     ),
                     const SizedBox(height: 10),
-                    // forgot password?
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Elfelejtett jelszó?',
-                            style: TextStyle(color: Colors.grey[100]),
-                          ),
-                        ],
-                      ),
+                    A_TextField(
+                      controller: emailController,
+                      hintText: 'E-mail cím',
+                      obscureText: false,
+                    ),
+                    const SizedBox(height: 10),
+                    A_TextField(
+                      controller: osztalyController,
+                      hintText: 'Osztály',
+                      obscureText: false,
                     ),
                     const SizedBox(height: 25),
                     // sign in button

@@ -59,7 +59,7 @@ Future<Message> joinIksz(User user, String title) async {
   }
 }
 
-Future<Message> regUser(
+Future<ServerValidation> regUser(
     String name, String password, String email, String osztaly) async {
   final response = await http.get(Uri.parse(
       '${AppConstants.API_REG}?name=$name&password=$password&email=$email&osztaly=$osztaly'));
@@ -68,7 +68,7 @@ Future<Message> regUser(
     // If the server did return a 200 OK response,
     // then parse the JSON.
     debugPrint(response.body);
-    return Message.fromJson(jsonDecode(response.body));
+    return ServerValidation.fromJson(jsonDecode(response.body));
   } else if (response.statusCode == 409) {
     // If the server did not return a 200 OK response,
     // then throw an exception.

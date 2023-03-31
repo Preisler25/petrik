@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../util/serverFunc.dart';
-import '../util/serverMessage.dart';
 import 'loginPage.dart';
 import 'registerPage.dart';
 
