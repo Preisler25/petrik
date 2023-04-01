@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/components/button.dart';
 import 'package:petrik/components/textfield.dart';
-import 'package:petrik/components/doubledropdown.dart';
 import 'package:petrik/util/serverObj.dart';
 
 import '../components/dialog.dart';
 import '../user/profile.dart';
 import '../util/serverFunc.dart';
-import '../util/serverMessage.dart';
 import 'mainPage.dart';
 
 //   /\_/\
@@ -35,12 +33,12 @@ class _RegisterFormState extends State<RegisterForm> {
   // sign up funkció
   void signUserUp(BuildContext context) async {
     String name = usernameController.text.trim();
+    String fullname = fullnameController.text.trim();
     String password = passwordController.text.trim();
     String password2 = password2Controller.text.trim();
     String email = emailController.text.trim();
     String osztaly = osztalyController.text.trim();
 
-    print('alma');
     print('name: $name, password: $password, email: $email, osztaly: $osztaly');
 
     setState(() {
@@ -51,12 +49,8 @@ class _RegisterFormState extends State<RegisterForm> {
 
     print('name: $name, password: $password, email: $email, osztaly: $osztaly');
 
-    ServerValidation status = await regUser(
-      name,
-      password,
-      email,
-      osztaly,
-    );
+    ServerValidation status =
+        await regUser(name, password, email, '9/kny', fullname);
     print(status);
     setState(() {
       isLoading = false;

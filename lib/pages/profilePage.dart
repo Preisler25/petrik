@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/user/user.dart';
 import 'package:petrik/user/profile.dart';
+import 'package:petrik/user/stayLogin.dart';
+import 'package:petrik/pages/loginORregister.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   void _handleLogout(BuildContext context) {
-    // Here implement the logic to log out the user
-    // For example, you could clear the user's session data, navigate
-    // back to the login page, etc.
-    Navigator.popUntil(context, ModalRoute.withName('/login'));
+    deleteLogin();
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginOrRegisterPage()),
+    );
   }
 
   @override
