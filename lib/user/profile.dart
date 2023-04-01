@@ -1,9 +1,13 @@
 import 'package:petrik/user/user.dart';
 
-User userProf = User(name: '', osztaly: '', key: '');
+User userProf = User(name: '', osztaly: '', key: '', fullname: '');
 
 void setName(name) {
   userProf.setName(name);
+}
+
+void setFullname(fullname) {
+  userProf.setFullname(fullname);
 }
 
 void setClass(osztaly) {
@@ -20,6 +24,10 @@ void setUser(user) {
 
 String getName() {
   return userProf.getName();
+}
+
+String getFullname() {
+  return userProf.getFullname();
 }
 
 String getClass() {

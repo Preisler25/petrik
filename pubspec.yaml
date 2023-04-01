@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   animations: any
   http: any
+  shared_preferences: any
 
 dev_dependencies:
   flutter_test:
