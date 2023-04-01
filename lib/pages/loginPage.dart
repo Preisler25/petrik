@@ -116,21 +116,22 @@ class _LoginFormState extends State<LoginForm> {
     Future<Map<String, String>>? userdata = isLogin();
     if (userdata != null) {
       userdata.then((value) {
-        if (value != {}) {
-          Future<ServerValidation> status =
-              checkUser(value['name']!, value['password']!);
-          status.then((value) {
-            if (value.status == true) {
-              setUser(value.user);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MainPage(),
-                ),
-              );
-            }
-          });
+        if (value['name'] == '-' || value['password'] == '-') {
+          return;
         }
+        Future<ServerValidation> status =
+            checkUser(value['name']!, value['password']!);
+        status.then((value) {
+          if (value.status == true) {
+            setUser(value.user);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MainPage(),
+              ),
+            );
+          }
+        });
       });
     }
 

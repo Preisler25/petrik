@@ -13,9 +13,9 @@ Future<Map<String, String>>? isLogin() async {
   if (stayLogin) {
     String name = prefs.getString('name') ?? '';
     String password = prefs.getString('password') ?? '';
-    return {name: name, password: password};
+    return {'name': name, 'password': password};
   }
-  return {};
+  return {'name': '-', 'password': '-'};
 }
 
 void deleteLogin() async {
