@@ -7,9 +7,13 @@ import 'package:petrik/pages/loginORregister.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
-  LoginOrRegisterPage _handleLogout(BuildContext context) {
+  void _handleLogout(BuildContext context) {
     deleteLogin();
-    return const LoginOrRegisterPage();
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginOrRegisterPage()),
+    );
   }
 
   @override
