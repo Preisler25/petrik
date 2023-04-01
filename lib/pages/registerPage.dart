@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/components/button.dart';
 import 'package:petrik/components/textfield.dart';
+import 'package:petrik/components/dropdown.dart';
 import 'package:petrik/util/serverObj.dart';
 
 import '../components/dialog.dart';
@@ -24,6 +25,7 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   //controllerek
+  final fullnameController = TextEditingController();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
   final password2Controller = TextEditingController();
@@ -37,49 +39,6 @@ class _RegisterFormState extends State<RegisterForm> {
     String password2 = password2Controller.text.trim();
     String email = emailController.text.trim();
     String osztaly = osztalyController.text.trim();
-
-    // Check if username is valid (not empty and the no special characters)
-    /*   if (name.isEmpty || !name.contains(RegExp(r'^[a-zA-Z0-9]+$'))) {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Invalid Username'),
-          content: const Text(
-            'A felhasználónév nem tartalmazhat speciális karaktereket.',
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('OK'),
-            ),
-          ],
-        ),
-      );
-      return;
-    } */
-
-    // Check if password is valid
-    /*  if (password.isEmpty ||
-        password.length < 6 ||
-        !password.contains(RegExp(r'\d')) ||
-        !password[0].toUpperCase().contains(RegExp(r'[A-Z]'))) {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Invalid Password'),
-          content: const Text(
-            'A jelszónak legalább 6 karakter hosszúnak kell lennie,legalább egy számot és egy nagy kezdőbetűt kell tartalmaznia.',
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('OK'),
-            ),
-          ],
-        ),
-      );
-      return;
-    } */
 
     print('alma');
     print('name: $name, password: $password, email: $email, osztaly: $osztaly');
@@ -142,22 +101,29 @@ class _RegisterFormState extends State<RegisterForm> {
                   children: [
                     const SizedBox(height: 25),
                     // logo
-                    const Icon(
+                    /* const Icon(
                       Icons.person_pin,
-                      size: 50,
+                      size: 80,
                       color: Color.fromARGB(255, 41, 172, 124),
-                    ),
+                    ), */
                     const SizedBox(height: 10),
                     //legyen szép napod:)
                     Text(
-                      'Ideje regisztrálnod!',
+                      'Fiók létrehozása',
                       style: TextStyle(
                         color: Colors.grey[100],
-                        fontSize: 16,
+                        fontSize: 32,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: 25),
+                    //fullname textfield
+                    A_TextField(
+                      controller: fullnameController,
+                      hintText: 'Teljes név',
+                      obscureText: false,
+                    ),
+                    const SizedBox(height: 10),
                     // username textfield
                     A_TextField(
                       controller: usernameController,
@@ -185,11 +151,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       obscureText: false,
                     ),
                     const SizedBox(height: 10),
-                    A_TextField(
-                      controller: osztalyController,
-                      hintText: 'Osztály',
-                      obscureText: false,
-                    ),
+                    //ide kell a drowdown
                     const SizedBox(height: 25),
                     // sign in button
                     A_Button(
@@ -201,7 +163,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         signUserUp(context);
                       },
                     ),
-                    const SizedBox(height: 50),
+                    const SizedBox(height: 30),
                     //jelentkezz be
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

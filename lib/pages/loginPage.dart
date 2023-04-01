@@ -133,7 +133,7 @@ class _LoginFormState extends State<LoginForm> {
                       'Legyen Szép Napod!',
                       style: TextStyle(
                         color: Colors.grey[100],
-                        fontSize: 16,
+                        fontSize: 21,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
