@@ -1,16 +1,22 @@
 class User {
   String name;
+  String fullname;
   String osztaly;
   String key;
 
   User({
     required this.name,
+    required this.fullname,
     required this.osztaly,
     required this.key,
   });
 
   setName(name) {
     this.name = name;
+  }
+
+  setFullname(fullname) {
+    this.fullname = fullname;
   }
 
   setClass(osztaly) {
@@ -29,6 +35,10 @@ class User {
 
   getName() {
     return name;
+  }
+
+  getFullname() {
+    return fullname;
   }
 
   getClass() {
@@ -51,11 +61,12 @@ class User {
       name: json['name'],
       osztaly: json['osztaly'],
       key: json['key'],
+      fullname: json['fullname'],
     );
   }
 
   @override
   String toString() {
-    return 'name: $name, osztaly: $osztaly, key: $key';
+    return 'name: $name, osztaly: $osztaly, key: $key fullname: $fullname';
   }
 }
