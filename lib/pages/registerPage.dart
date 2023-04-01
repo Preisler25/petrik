@@ -63,16 +63,6 @@ class _RegisterFormState extends State<RegisterForm> {
       return;
     }
 
-    bool isValidUsername(String username) {
-      // Regex to allow alphanumeric characters and underscores
-      final regex = RegExp(r'^[A-Z][a-z]*(\s[A-Z][a-z]*)+$');
-
-      // Check length and character validation
-      return username.length >= 4 &&
-          username.length <= 20 &&
-          regex.hasMatch(username);
-    }
-
     //Máté a regUser az nem status hanem message ==> petrik/lib/util/user.dart  ugyan ugy van a message nek is status paramétere message.status, de egyedül a loginnél küldünk vissza status status amit lehet most fixelek mert ezt igy le írva érzem hogy szar <3
 
     print('name: $name, password: $password, email: $email, osztaly: $osztaly');
