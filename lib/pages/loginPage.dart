@@ -176,7 +176,7 @@ class _LoginFormState extends State<LoginForm> {
                       controller: passwordController,
                       hintText: 'Jelszó',
                       obscureText: true,
-                      prefixIcon: Icons.person,
+                      prefixIcon: Icons.lock,
                     ),
                     const SizedBox(height: 10),
                     // forgot password?

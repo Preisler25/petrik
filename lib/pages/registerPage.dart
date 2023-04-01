@@ -117,7 +117,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       controller: fullnameController,
                       hintText: 'Teljes név',
                       obscureText: false,
-                      prefixIcon: Icons.person,
+                      prefixIcon: Icons.badge,
                     ),
                     const SizedBox(height: 10),
                     // username textfield
@@ -133,7 +133,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       controller: passwordController,
                       hintText: 'Jelszó',
                       obscureText: true,
-                      prefixIcon: Icons.person,
+                      prefixIcon: Icons.lock,
                     ),
                     const SizedBox(height: 10),
                     //confirm password textfield
@@ -141,14 +141,14 @@ class _RegisterFormState extends State<RegisterForm> {
                       controller: password2Controller,
                       hintText: 'Jelszó megerősítése',
                       obscureText: true,
-                      prefixIcon: Icons.person,
+                      prefixIcon: Icons.lock,
                     ),
                     const SizedBox(height: 10),
                     A_TextField(
                       controller: emailController,
                       hintText: 'E-mail cím',
                       obscureText: false,
-                      prefixIcon: Icons.person,
+                      prefixIcon: Icons.alternate_email,
                     ),
                     const SizedBox(height: 10),
                     //ide kell a drowdown
