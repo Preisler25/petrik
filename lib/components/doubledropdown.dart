@@ -7,10 +7,10 @@ class DoubleDropdownMenu extends StatefulWidget {
 
 class _DoubleDropdownMenuState extends State<DoubleDropdownMenu> {
   String selectedNumber = '9';
-  String selectedLetter = 'A';
+  String selectedLetter = 'KNY';
 
   final List<String> numbers = ['9', '10', '11', '12'];
-  final List<String> letters = ['A', 'B', 'C', 'D'];
+  final List<String> letters = ['KNY', 'A', 'B', 'C', 'D', 'E', 'NY'];
 
   @override
   Widget build(BuildContext context) {
