@@ -8,6 +8,7 @@ import '../components/dialog.dart';
 import '../user/profile.dart';
 import '../util/serverFunc.dart';
 import 'mainPage.dart';
+import 'package:petrik/util/functions/validaciok.dart';
 
 //   /\_/\
 //  ( o o )
@@ -45,6 +46,32 @@ class _RegisterFormState extends State<RegisterForm> {
     setState(() {
       isLoading = true;
     });
+    if (!isValidFullName(fullname)) {
+      setState(() {
+        isLoading = false;
+        return;
+      });
+      showDialog(
+        context: context,
+        builder: (context) => A_Dialog(
+          title: "Érvénytelen név",
+          content: "Kérlek helyesen add meg a teljes neved!",
+          onPressed: () => Navigator.pop(context),
+          icon: Icons.sentiment_dissatisfied,
+        ),
+      );
+      return;
+    }
+
+    bool isValidUsername(String username) {
+      // Regex to allow alphanumeric characters and underscores
+      final regex = RegExp(r'^[A-Z][a-z]*(\s[A-Z][a-z]*)+$');
+
+      // Check length and character validation
+      return username.length >= 4 &&
+          username.length <= 20 &&
+          regex.hasMatch(username);
+    }
 
     //Máté a regUser az nem status hanem message ==> petrik/lib/util/user.dart  ugyan ugy van a message nek is status paramétere message.status, de egyedül a loginnél küldünk vissza status status amit lehet most fixelek mert ezt igy le írva érzem hogy szar <3
 
@@ -59,7 +86,7 @@ class _RegisterFormState extends State<RegisterForm> {
     if (status.status == true) {
       setUser(status.user);
 
-      //Navigálás a userpage oldalra, ha a bejelentkezés sikeres
+      //Navigálás a userpage oldalra, ha a reg sikeres
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -67,12 +94,12 @@ class _RegisterFormState extends State<RegisterForm> {
         ),
       );
     } else {
-      // Ha a bejelentkezés sikertelen, akkor egy alert dialog jelenik meg
+      // Ha a reg sikertelen, akkor egy alert dialog jelenik meg
       showDialog(
         context: context,
         builder: (context) => A_Dialog(
-          title: "Sikertelen Bejelentkezés",
-          content: "Hibás felhasználónév vagy jelszó",
+          title: "Sikertelen Regisztráció",
+          content: "Ez a felhasználónév már foglalt!",
           onPressed: () => Navigator.pop(context),
           icon: Icons.sentiment_dissatisfied,
         ),
@@ -128,6 +155,13 @@ class _RegisterFormState extends State<RegisterForm> {
                       prefixIcon: Icons.person,
                     ),
                     const SizedBox(height: 10),
+                    A_TextField(
+                      controller: emailController,
+                      hintText: 'E-mail cím',
+                      obscureText: false,
+                      prefixIcon: Icons.alternate_email,
+                    ),
+                    const SizedBox(height: 10),
                     // password textfield
                     A_TextField(
                       controller: passwordController,
@@ -142,13 +176,6 @@ class _RegisterFormState extends State<RegisterForm> {
                       hintText: 'Jelszó megerősítése',
                       obscureText: true,
                       prefixIcon: Icons.lock,
-                    ),
-                    const SizedBox(height: 10),
-                    A_TextField(
-                      controller: emailController,
-                      hintText: 'E-mail cím',
-                      obscureText: false,
-                      prefixIcon: Icons.alternate_email,
                     ),
                     const SizedBox(height: 10),
                     //ide kell a drowdown
