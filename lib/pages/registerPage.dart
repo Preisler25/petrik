@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/components/button.dart';
 import 'package:petrik/components/textfield.dart';
-import 'package:petrik/components/dropdown.dart';
+import 'package:petrik/components/doubledropdown.dart';
 import 'package:petrik/util/serverObj.dart';
 
 import '../components/dialog.dart';
@@ -152,6 +152,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     ),
                     const SizedBox(height: 10),
                     //ide kell a drowdown
+                    DoubleDropdownMenu(),
                     const SizedBox(height: 25),
                     // sign in button
                     A_Button(
