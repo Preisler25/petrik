@@ -7,7 +7,7 @@ void saveLogin(String name, String password) async {
   prefs.setString('password', password);
 }
 
-Future<Map<String, String>> isLogin() async {
+Future<Map<String, String>>? isLogin() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool stayLogin = prefs.getBool('stayLogin') ?? false;
   if (stayLogin) {

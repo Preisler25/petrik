@@ -7,6 +7,8 @@ import 'package:petrik/user/profile.dart';
 import 'package:petrik/util/serverFunc.dart';
 import 'package:petrik/util/serverObj.dart';
 
+import '../user/stayLogin.dart';
+
 //MÁTÉNAK note: a login gombra létre hozzól egy User(name, password) objektumot, majd a User osztályban lévő checkUser() metódusával elküldi a szervernek, a szerver pedig visszaküldi a választ, amit a login gombra létrehozott User objektum checkUser() metódusával fogadunk el.
 
 //   /\_/\
@@ -84,6 +86,7 @@ class _LoginFormState extends State<LoginForm> {
     });
     if (status.status == true) {
       setUser(status.user);
+      saveLogin(name, password);
 
       //Navigálás a userpage oldalra, ha a bejelentkezés sikeres
       Navigator.push(
@@ -110,6 +113,27 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    Future<Map<String, String>>? userdata = isLogin();
+    if (userdata != null) {
+      userdata.then((value) {
+        if (value != {}) {
+          Future<ServerValidation> status =
+              checkUser(value['name']!, value['password']!);
+          status.then((value) {
+            if (value.status == true) {
+              setUser(value.user);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MainPage(),
+                ),
+              );
+            }
+          });
+        }
+      });
+    }
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
