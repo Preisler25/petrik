@@ -69,7 +69,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
     ServerValidation status =
         await regUser(name, password, email, '9/kny', fullname);
-    print(status);
+    print('status:$status');
     setState(() {
       isLoading = false;
     });

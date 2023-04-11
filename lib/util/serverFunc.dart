@@ -61,6 +61,9 @@ Future<Message> joinIksz(User user, String title) async {
 
 Future<ServerValidation> regUser(String name, String password, String email,
     String osztaly, String fullname) async {
+  print(
+      '--name: $name, password: $password, email: $email, osztaly: $osztaly, fullname: $fullname');
+
   final response = await http.get(Uri.parse(
       '${AppConstants.API_REG}?name=$name&password=$password&email=$email&osztaly=$osztaly&fullname=$fullname'));
 
