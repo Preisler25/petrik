@@ -12,6 +12,10 @@ class _DoubleDropdownMenuState extends State<DoubleDropdownMenu> {
   final List<String> numbers = ['9', '10', '11', '12'];
   final List<String> letters = ['KNY', 'A', 'B', 'C', 'D', 'E', 'NY'];
 
+  getClass() {
+    return '$selectedNumber/$selectedLetter';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Theme(
