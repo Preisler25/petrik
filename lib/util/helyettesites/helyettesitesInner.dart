@@ -79,6 +79,26 @@ class HelyetInner {
                   ),
                 ),
                 Align(
+                  alignment: const Alignment(0, -0.7),
+                  child: Text(
+                    helytan_name,
+                    style: const TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: const Alignment(0, -0.6),
+                  child: Text(
+                    terem,
+                    style: const TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                Align(
                   alignment: const Alignment(0, -0.5),
                   child: Text(
                     ora,
