@@ -52,9 +52,9 @@ class HelyetInner {
             //--
             alignment: const Alignment(0.0, 0.0),
             child: Text(
-              t_name,
+              "Tanár: $t_name\nÓra: $ora",
               style: const TextStyle(
-                fontSize: 20.0,
+                fontSize: 25.0,
                 color: Colors.black,
               ),
             ),
@@ -71,39 +71,9 @@ class HelyetInner {
                 Align(
                   alignment: const Alignment(0, -0.8),
                   child: Text(
-                    t_name,
+                    "\n\nHiányzó tanár:\t$t_name\n\nÓra:\t $ora\n\nHelyettesítő tanár:\t $helytan_name\n\nTerem:\t $terem",
                     style: const TextStyle(
-                      fontSize: 40.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: const Alignment(0, -0.7),
-                  child: Text(
-                    helytan_name,
-                    style: const TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: const Alignment(0, -0.6),
-                  child: Text(
-                    terem,
-                    style: const TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: const Alignment(0, -0.5),
-                  child: Text(
-                    ora,
-                    style: const TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 30.0,
                       color: Colors.black,
                     ),
                   ),
