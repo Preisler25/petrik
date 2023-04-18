@@ -168,8 +168,9 @@ class _RegisterFormState extends State<RegisterForm> {
                       prefixIcon: Icons.lock,
                     ),
                     const SizedBox(height: 10),
-                    //ide kell a drowdown
+                    //need to get the class value back
                     DoubleDropdownMenu(),
+
                     const SizedBox(height: 25),
                     // sign in button
                     A_Button(
