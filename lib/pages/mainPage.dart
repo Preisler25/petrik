@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:petrik/pages/profilePage.dart';
 import 'package:petrik/user/user.dart';
 import 'package:petrik/pages/ikszPage.dart';
-import 'package:petrik/pages/newsPage.dart';
-import 'package:petrik/pages/orarendPage.dart';
 import 'package:petrik/pages/chPage.dart';
 
 class MainPage extends StatefulWidget {
@@ -26,17 +24,9 @@ class _MainState extends State<MainPage> {
     const Page1(),
     const Page2(),
     const Page3(),
-    const Page4(),
-    const Page5(),
   ];
 
-  static final List<String> _titleList = [
-    'Petrik News',
-    'IKSZ',
-    'Órarend',
-    'Helyettesít',
-    'Fiók'
-  ];
+  static final List<String> _titleList = ['IKSZ', 'Helyettesít', 'Fiók'];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -76,16 +66,8 @@ class _MainState extends State<MainPage> {
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.newspaper),
-              label: 'Hírek',
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.work),
               label: 'IKSZ',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month),
-              label: 'Órarend',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.group_remove),
@@ -109,7 +91,7 @@ class Page1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NewsPage();
+    return const IkszPage();
   }
 }
 
@@ -118,30 +100,12 @@ class Page2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const IkszPage();
+    return const ChPage();
   }
 }
 
 class Page3 extends StatelessWidget {
   const Page3({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const OrarendPage();
-  }
-}
-
-class Page4 extends StatelessWidget {
-  const Page4({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const ChPage();
-  }
-}
-
-class Page5 extends StatelessWidget {
-  const Page5({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

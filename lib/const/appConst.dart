@@ -1,4 +1,5 @@
 class AppConstants {
+  //static const String Base_URL = 'https://helyettesites.petrik.hu/'; //pord
   static const String Base_URL = 'http://192.168.1.199:80'; //Preisler
   //static const String Base_URL = 'http://192.168.64.202:80'; //preisle mac
   //static const String Base_URL = 'http://192.168.100.14:80'; //Mate
@@ -7,6 +8,5 @@ class AppConstants {
   static const String API_IKSZ = '$API_URL/iksz';
   static const String API_REG = '$API_URL/reg';
   static const String API_JOIN = '$API_URL/join_iksz';
-  static const String API_HELYETTESITES =
-      'https://helyettesites.petrik.hu/api/?status=napihely';
+  static const String API_HELYETTESITES = '$API_URL/?status=napihely';
 }
