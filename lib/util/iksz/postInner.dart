@@ -46,6 +46,7 @@ class PostInner {
       height: 200,
       child: OpenContainer(
         closedElevation: 10,
+        closedColor: Colors.transparent,
         closedShape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -56,7 +57,7 @@ class PostInner {
                 BoxShadow(
                   color: Colors.red,
                   blurRadius: 8,
-                  offset: Offset(8, 16), // Shadow position
+                  offset: Offset(10, 10), // Shadow position
                 ),
               ],
               gradient: LinearGradient(
