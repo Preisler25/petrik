@@ -47,20 +47,40 @@ class PostInner {
       child: OpenContainer(
         closedElevation: 10,
         closedShape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(6)),
+          borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
-        closedColor: const Color.fromARGB(255, 103, 255, 212),
         closedBuilder: (context, action) {
-          return Align(
-            //--
-            //this is the closed container
-            //--
-            alignment: const Alignment(0.0, 0.0),
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontSize: 20.0,
-                color: Colors.black,
+          return Container(
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.red,
+                  blurRadius: 8,
+                  offset: Offset(8, 16), // Shadow position
+                ),
+              ],
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.orange,
+                  Colors.yellow,
+                  Colors.orangeAccent,
+                  Colors.deepOrange
+                ],
+              ),
+            ),
+            child: Align(
+              //--
+              //this is the closed container
+              //--
+              alignment: const Alignment(0.0, 0.0),
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.black,
+                ),
               ),
             ),
           );
