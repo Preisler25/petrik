@@ -98,60 +98,44 @@ class PostInner {
                 ],
               ),
             ),
-            child: Column(
+            child: Stack(
               children: [
-                Expanded(
-                  flex: 1,
-                  child: Align(
-                    alignment: const Alignment(0.9, 0.0),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.black,
-                        backgroundColor: Colors.white,
-                        shape: const CircleBorder(),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text(
-                        'X',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.black,
-                        ),
+                Align(
+                  alignment: const Alignment(0.9, -0.9),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      shape: const CircleBorder(),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'X',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.black,
                       ),
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 5,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Colors.orange,
-                          Colors.yellow,
-                          Colors.orangeAccent,
-                          Colors.deepOrange
-                        ],
-                      ),
-                    ),
-                    child: Column(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Text(
-                            title,
-                            style: const TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.black,
-                            ),
+                Container(
+                  margin: const EdgeInsets.only(top: 50),
+                  height: 400,
+                  child: Stack(
+                    children: [
+                      Container(
+                        child: Text(
+                          title,
+                          style: const TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.black,
                           ),
                         ),
-                        Expanded(
-                          flex: 1,
+                      ),
+                      Container(
+                        child: Container(
                           child: Text(
                             description,
                             style: const TextStyle(
@@ -160,22 +144,20 @@ class PostInner {
                             ),
                           ),
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: Text(
-                            imageURL!,
-                            style: const TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.black,
-                            ),
+                      ),
+                      Container(
+                        child: Text(
+                          imageURL!,
+                          style: const TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.black,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                Expanded(
-                  flex: 1,
+                Container(
                   child: Align(
                     alignment: const Alignment(0.0, 0.0),
                     child: ElevatedButton(
