@@ -7,12 +7,12 @@ import '../../user/user.dart';
 import '../serverMessage.dart';
 
 class PostInner {
-  final int id;
+  final String id;
   final String title;
   final String description;
-  final String? imageURL;
+  String? imageURL;
 
-  const PostInner({
+  PostInner({
     required this.id,
     required this.title,
     required this.description,
@@ -38,6 +38,11 @@ class PostInner {
   //view of the post
   Widget build(BuildContext context) {
     double.infinity;
+    if (imageURL == "") {
+      print("körte");
+      imageURL =
+          "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png";
+    }
     return SizedBox(
       width: 200,
       height: 200,
