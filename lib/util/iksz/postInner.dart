@@ -98,24 +98,180 @@ class PostInner {
                 ],
               ),
             ),
-            child: Stack(
+            child: Column(
               children: [
-                Align(
-                  alignment: const Alignment(0, -0.8),
-                  child: Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 40.0,
-                      color: Colors.black,
+                Expanded(
+                  flex: 1,
+                  child: Align(
+                    alignment: const Alignment(0.9, 0.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.black,
+                        backgroundColor: Colors.white,
+                        shape: const CircleBorder(),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text(
+                        'X',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
                   ),
                 ),
-                Align(
-                  alignment: const Alignment(0, -0.5),
-                  child: Text(description),
+                Expanded(
+                  flex: 5,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Colors.orange,
+                          Colors.yellow,
+                          Colors.orangeAccent,
+                          Colors.deepOrange
+                        ],
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Text(
+                            title,
+                            style: const TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Text(
+                            description,
+                            style: const TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Text(
+                            imageURL!,
+                            style: const TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                Align(
-                  alignment: const Alignment(0, -0.4),
+                Expanded(
+                  flex: 1,
+                  child: Align(
+                    alignment: const Alignment(0.0, 0.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.black,
+                        backgroundColor: Colors.white,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                        ),
+                      ),
+                      onPressed: () {
+                        User user = getUser();
+                        Future<Message> message = joinIksz(user, title);
+                        message.then((value) {
+                          if (value.status == true) {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text("Sikeres csatlakozás!"),
+                                  content: const Text(
+                                      "Sikeresen csatlakoztál az ikszhez!"),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text("OK"),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          } else {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text("Sikertelen csatlakozás!"),
+                                  content: const Text(
+                                      "Sikertelen csatlakozás az ikszhez!"),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text("OK"),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        });
+                      },
+                      child: const Text(
+                        'Csatlakozás',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+
+/*ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      shape: const CircleBorder(),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'X',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  
+
+                  Expanded(
+                  flex: 1,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
@@ -175,44 +331,6 @@ class PostInner {
                     ),
                   ),
                 ),
-                Align(
-                  alignment: const Alignment(0.0, 0.9),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child: Image(
-                      image: NetworkImage('$imageURL'),
-                      width: 200,
-                    ),
-                  ),
-                ),
-                Align(
-                  //--
-                  //this is the close button
-                  //--
-                  alignment: const Alignment(0.9, -0.9),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black,
-                      backgroundColor: Colors.white,
-                      shape: const CircleBorder(),
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text(
-                      'X',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
+                  
+                  
+                  */
