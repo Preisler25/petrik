@@ -21,7 +21,7 @@ class ProfilePage extends StatelessWidget {
     User user = getUser();
 
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.black,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,16 +32,19 @@ class ProfilePage extends StatelessWidget {
               children: [
                 Text(
                   'Szia, ${user.name}!',
-                  style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
                 IconButton(
-                  icon: Icon(Icons.logout),
+                  icon: const Icon(Icons.logout),
                   onPressed: () => _handleLogout(context),
                 ),
               ],
             ),
           ),
-          SizedBox(height: 24.0),
+          const SizedBox(height: 24.0),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
@@ -51,15 +54,15 @@ class ProfilePage extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              margin: EdgeInsets.only(top: 32.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
+              margin: const EdgeInsets.only(top: 32.0),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(66, 255, 255, 255),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(24.0),
                   topRight: Radius.circular(24.0),
                 ),
               ),
-              child: Center(
+              child: const Center(
                 child: Text(
                   'Ide majd jönnek a beállítások',
                   style: TextStyle(fontSize: 20.0),

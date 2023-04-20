@@ -52,14 +52,7 @@ class PostInner {
         ),
         closedBuilder: (context, action) {
           return Container(
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.red,
-                  blurRadius: 8,
-                  offset: Offset(10, 10), // Shadow position
-                ),
-              ],
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -91,7 +84,18 @@ class PostInner {
           //this is the open container
           //--
           return Container(
-            color: const Color.fromARGB(255, 103, 255, 212),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.orange,
+                  Colors.yellow,
+                  Colors.orangeAccent,
+                  Colors.deepOrange
+                ],
+              ),
+            ),
             child: Stack(
               children: [
                 Align(
@@ -116,10 +120,11 @@ class PostInner {
                   alignment: const Alignment(0, -0.4),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black,
-                      backgroundColor: Colors.white,
-                      shape: const CircleBorder(),
-                    ),
+                        foregroundColor: Colors.black,
+                        backgroundColor: Colors.white,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                        )),
                     onPressed: () {
                       User user = getUser();
                       Future<Message> message = joinIksz(user, title);
