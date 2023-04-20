@@ -25,7 +25,7 @@ Future<JsonPostList> fetchPostListInner(User user) async {
   //the responese will be a json object which has a property called posts, which is an array of posts
   //{posts: [{id: 1, title: "title1", description: "description1", img_url: "url1"}, {id: 2, title: "title2", description: "description2", img_url: "url2"}]
   final response = await http.get(
-    Uri.parse('${AppConstants.API_IKSZ}?name=${user.name}&key=${user.key}'),
+    Uri.parse(AppConstants.API_IKSZ),
   );
   //now we are testing if the response is ok
   if (response.statusCode == 200) {

@@ -8,14 +8,12 @@ import '../serverMessage.dart';
 
 class PostInner {
   final int id;
-  final int free_spaces;
   final String title;
   final String description;
   final String? imageURL;
 
   const PostInner({
     required this.id,
-    required this.free_spaces,
     required this.title,
     required this.description,
     this.imageURL,
@@ -25,17 +23,16 @@ class PostInner {
   factory PostInner.fromJson(Map<dynamic, dynamic> json) {
     return PostInner(
       id: json['id'],
-      free_spaces: json['free_spaces'],
-      title: json['title'],
-      description: json['description'],
-      imageURL: json['img_url'],
+      title: json['name'],
+      description: json['descript'],
+      imageURL: json['imgUrl'],
     );
   }
 
   //to print the Post object
   @override
   String toString() {
-    return 'id: $id, title: $title, free_space: $free_spaces description: $description, image: $imageURL';
+    return 'id: $id, title: $title, description: $description, image: $imageURL';
   }
 
   //view of the post
@@ -111,10 +108,6 @@ class PostInner {
                 Align(
                   alignment: const Alignment(0, -0.5),
                   child: Text(description),
-                ),
-                Align(
-                  alignment: const Alignment(0, -0.3),
-                  child: Text('Free spaces: $free_spaces'),
                 ),
                 Align(
                   alignment: const Alignment(0, -0.4),
