@@ -38,6 +38,7 @@ class ProfilePage extends StatelessWidget {
                       color: Colors.white),
                 ),
                 IconButton(
+                  color: Colors.white,
                   icon: const Icon(Icons.logout),
                   onPressed: () => _handleLogout(context),
                 ),
@@ -45,13 +46,6 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24.0),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(
-              'A te osztályod: ${user.osztaly}',
-              style: TextStyle(fontSize: 18.0, color: Colors.grey[600]),
-            ),
-          ),
           Expanded(
             child: Container(
               margin: const EdgeInsets.only(top: 32.0),

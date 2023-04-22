@@ -30,7 +30,6 @@ class _RegisterFormState extends State<RegisterForm> {
   final passwordController = TextEditingController();
   final password2Controller = TextEditingController();
   final emailController = TextEditingController();
-  final osztalyController = TextEditingController();
 
   // sign up funkció
   void signUserUp(BuildContext context) async {
@@ -39,9 +38,8 @@ class _RegisterFormState extends State<RegisterForm> {
     String password = passwordController.text.trim();
     String password2 = password2Controller.text.trim();
     String email = emailController.text.trim();
-    String osztaly = osztalyController.text.trim();
 
-    print('name: $name, password: $password, email: $email, osztaly: $osztaly');
+    print('name: $name, password: $password, email: $email');
 
     setState(() {
       isLoading = true;
@@ -65,10 +63,9 @@ class _RegisterFormState extends State<RegisterForm> {
 
     //Máté a regUser az nem status hanem message ==> petrik/lib/util/user.dart  ugyan ugy van a message nek is status paramétere message.status, de egyedül a loginnél küldünk vissza status status amit lehet most fixelek mert ezt igy le írva érzem hogy szar <3
 
-    print('name: $name, password: $password, email: $email, osztaly: $osztaly');
+    print('name: $name, password: $password, email: $email,');
 
-    ServerValidation status =
-        await regUser(name, password, email, '9/kny', fullname);
+    ServerValidation status = await regUser(name, password, email);
     print('status:$status');
     setState(() {
       isLoading = false;
@@ -168,8 +165,6 @@ class _RegisterFormState extends State<RegisterForm> {
                       prefixIcon: Icons.lock,
                     ),
                     const SizedBox(height: 10),
-                    //need to get the class value back
-                    DoubleDropdownMenu(),
 
                     const SizedBox(height: 25),
                     // sign in button

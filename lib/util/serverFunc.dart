@@ -59,13 +59,15 @@ Future<Message> joinIksz(User user, String title) async {
   }
 }
 
-Future<ServerValidation> regUser(String name, String password, String email,
-    String osztaly, String fullname) async {
-  print(
-      '--name: $name, password: $password, email: $email, osztaly: $osztaly, fullname: $fullname');
+Future<ServerValidation> regUser(
+  String name,
+  String password,
+  String email,
+) async {
+  print('--name: $name, password: $password, email: $email');
 
   final response = await http.get(Uri.parse(
-      '${AppConstants.API_REG}?name=$name&password=$password&email=$email&osztaly=$osztaly&fullname=$fullname'));
+      '${AppConstants.API_REG}?name=$name&password=$password&email=$email'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,

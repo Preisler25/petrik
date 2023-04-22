@@ -150,7 +150,7 @@ class _LoginFormState extends State<LoginForm> {
                     const Icon(
                       Icons.person_pin,
                       size: 100,
-                      color: Color.fromARGB(255, 41, 172, 124),
+                      color: Colors.cyan,
                     ),
                     const SizedBox(height: 10),
                     //legyen szép napod:)

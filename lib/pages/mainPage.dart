@@ -48,12 +48,12 @@ class _MainState extends State<MainPage> {
       title: 'Petrik',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.cyan,
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           type: BottomNavigationBarType.fixed,
           backgroundColor: Color.fromARGB(255, 0, 0, 0),
-          selectedItemColor: Color.fromARGB(255, 255, 160, 64),
-          unselectedItemColor: Color.fromARGB(100, 255, 160, 64),
+          selectedItemColor: Color.fromARGB(255, 64, 242, 255),
+          unselectedItemColor: Color.fromARGB(99, 64, 255, 255),
         ),
       ),
       home: Scaffold(

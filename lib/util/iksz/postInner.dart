@@ -59,7 +59,7 @@ class PostInner {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Colors.white,
+                  Colors.cyanAccent,
                   Colors.cyan,
                 ],
               ),
@@ -70,10 +70,11 @@ class PostInner {
               //--
               alignment: const Alignment(0.0, 0.0),
               child: Text(
+                textAlign: TextAlign.center,
                 title,
                 style: const TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.black,
+                  fontSize: 30.0,
+                  color: Color.fromARGB(255, 36, 38, 40),
                 ),
               ),
             ),
