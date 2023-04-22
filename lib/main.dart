@@ -15,19 +15,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Petrik',
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Color.fromARGB(255, 0, 0, 0),
-          selectedItemColor: Color.fromARGB(255, 103, 255, 212),
-          unselectedItemColor: Color.fromARGB(112, 103, 255, 212),
-        ),
-      ),
-      home: const LoginOrRegisterPage(),
+      home: LoginOrRegisterPage(),
     );
   }
 }

@@ -10,13 +10,12 @@ class JsonPostList {
   });
 
   //this method will be used to create a JsonPostList object from a json object
-  factory JsonPostList.fromJson(Map<String, dynamic> parsedJson) {
+  factory JsonPostList.fromJson(List<dynamic> parsedJson) {
     //we are creating a list of postsInners from the json object
     List<PostInner> posts = <PostInner>[];
     //we are iterating through the posts array in the json object and adding them to the posts list
-    posts = parsedJson['posts']
-        .map<PostInner>((json) => PostInner.fromJson(json))
-        .toList();
+    posts =
+        parsedJson.map<PostInner>((json) => PostInner.fromJson(json)).toList();
 
     return JsonPostList(
       posts: posts,
