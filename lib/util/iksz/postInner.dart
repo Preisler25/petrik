@@ -127,6 +127,7 @@ class PostInner {
                   ),
                 ),
                 Container(
+                  width: MediaQuery.of(context).size.width,
                   padding: const EdgeInsets.only(left: 10, right: 10),
                   child: Container(
                     height: 450,
