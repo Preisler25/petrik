@@ -137,17 +137,21 @@ class PostInner {
                       color: Color.fromARGB(255, 255, 255, 255),
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
-                    child: Expanded(
-                      flex: 1,
-                      child: SingleChildScrollView(
-                        child: Text(
-                          description,
-                          style: const TextStyle(
-                            fontSize: 23.0,
-                            color: Colors.black,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: SingleChildScrollView(
+                            child: Text(
+                              description,
+                              style: const TextStyle(
+                                fontSize: 23.0,
+                                color: Colors.black,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ),
