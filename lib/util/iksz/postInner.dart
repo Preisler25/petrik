@@ -98,10 +98,9 @@ class PostInner {
                 ],
               ),
             ),
-            child: Stack(
+            child: Column(
               children: [
-                Align(
-                  alignment: const Alignment(0.9, -0.9),
+                Container(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black,
@@ -120,105 +119,91 @@ class PostInner {
                     ),
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 50),
-                  height: 400,
-                  child: Stack(
-                    children: [
-                      Container(
-                        child: Text(
-                          title,
-                          style: const TextStyle(
-                            fontSize: 20.0,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        child: Container(
-                          child: Text(
-                            description,
-                            style: const TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        child: Text(
-                          imageURL!,
-                          style: const TextStyle(
-                            fontSize: 20.0,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ],
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.black,
                   ),
                 ),
                 Container(
-                  child: Align(
-                    alignment: const Alignment(0.0, 0.0),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
+                  width: MediaQuery.of(context).size.width,
+                  padding: const EdgeInsets.all(10),
+                  child: Expanded(
+                    flex: 1,
+                    child: SingleChildScrollView(
+                      child: Text(
+                        description,
+                        style: const TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Image.network(
+                  imageURL!,
+                  fit: BoxFit.fill,
+                ),
+                Container(
+                  width: 100,
+                  height: 40,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
                         backgroundColor: Colors.white,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                      ),
-                      onPressed: () {
-                        User user = getUser();
-                        Future<Message> message = joinIksz(user, title);
-                        message.then((value) {
-                          if (value.status == true) {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: const Text("Sikeres csatlakozás!"),
-                                  content: const Text(
-                                      "Sikeresen csatlakoztál az ikszhez!"),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: const Text("OK"),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          } else {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: const Text("Sikertelen csatlakozás!"),
-                                  content: const Text(
-                                      "Sikertelen csatlakozás az ikszhez!"),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: const Text("OK"),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          }
-                        });
-                      },
-                      child: const Text(
-                        'Csatlakozás',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.black,
-                        ),
+                        )),
+                    onPressed: () {
+                      User user = getUser();
+                      Future<Message> message = joinIksz(user, title);
+                      message.then((value) {
+                        if (value.status == true) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Sikeres csatlakozás!'),
+                                content: Text(value.message),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Error'),
+                                content: Text(value.message),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
+                      });
+                    },
+                    child: const Text(
+                      'Join',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.black,
                       ),
                     ),
                   ),
