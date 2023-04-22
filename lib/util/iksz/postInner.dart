@@ -59,10 +59,8 @@ class PostInner {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Colors.orange,
-                  Colors.yellow,
-                  Colors.orangeAccent,
-                  Colors.deepOrange
+                  Colors.white,
+                  Colors.cyan,
                 ],
               ),
             ),
@@ -91,16 +89,16 @@ class PostInner {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Colors.orange,
-                  Colors.yellow,
-                  Colors.orangeAccent,
-                  Colors.deepOrange
+                  Colors.white,
+                  Colors.cyan,
                 ],
               ),
             ),
             child: Column(
               children: [
                 Container(
+                  alignment: Alignment.topRight,
+                  padding: EdgeInsets.only(top: 40, right: 10),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black,
@@ -121,31 +119,37 @@ class PostInner {
                 ),
                 Text(
                   title,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
-                    fontSize: 20.0,
+                    fontSize: 40.0,
                     color: Colors.black,
                   ),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.all(10),
-                  child: Expanded(
-                    flex: 1,
-                    child: SingleChildScrollView(
-                      child: Text(
-                        description,
-                        style: const TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.black,
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Container(
+                    height: 450,
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    child: Expanded(
+                      flex: 1,
+                      child: SingleChildScrollView(
+                        child: Text(
+                          description,
+                          style: const TextStyle(
+                            fontSize: 23.0,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                Image.network(
-                  imageURL!,
-                  fit: BoxFit.fill,
-                ),
+                const SizedBox(height: 10),
                 Container(
                   width: 100,
                   height: 40,
