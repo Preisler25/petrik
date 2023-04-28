@@ -1,7 +1,7 @@
 class AppConstants {
   //static const String Base_URL = 'https://helyettesites.petrik.hu/'; //pord
   //static const String Base_URL = 'http://192.168.1.199:80'; //Preisler
-  static const String Base_URL = 'http://192.168.176.202:80'; //preisle mac
+  static const String Base_URL = 'http://192.168.1.114:80'; //preisle mac
   //static const String Base_URL = 'http://192.168.100.14:80'; //Mate
   //static const String Base_URL = 'https://helyettesistes.petrik.hu/'; //pord
   static const String API_URL = '$Base_URL/api';

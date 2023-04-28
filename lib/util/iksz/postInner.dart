@@ -92,7 +92,7 @@ class PostInner {
               children: [
                 Container(
                   alignment: Alignment.topRight,
-                  padding: EdgeInsets.only(top: 40, right: 10),
+                  padding: const EdgeInsets.only(top: 40, right: 10),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black,
@@ -119,43 +119,33 @@ class PostInner {
                     color: Colors.black,
                   ),
                 ),
+                const SizedBox(height: 20),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   padding: const EdgeInsets.only(left: 10, right: 10),
                   child: Container(
-                    height: 500,
+                    height: 600,
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.all(10),
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(205, 255, 255, 255),
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
-                    child: new BackdropFilter(
-                      filter: new ui.ImageFilter.blur(
-                        sigmaX: 5.0,
-                        sigmaY: 5.0,
-                      ),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: SingleChildScrollView(
-                              child: Text(
-                                description,
-                                style: const TextStyle(
-                                  fontSize: 23.0,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
+                    child: ListView(
+                      children: [
+                        Text(
+                          description,
+                          style: const TextStyle(
+                            fontSize: 23.0,
+                            color: Colors.black,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
                 const SizedBox(height: 10),
-                Container(
+                SizedBox(
                   width: 100,
                   height: 40,
                   child: ElevatedButton(

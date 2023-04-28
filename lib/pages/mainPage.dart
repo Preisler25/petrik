@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:petrik/pages/profilePage.dart';
-import 'package:petrik/user/user.dart';
 import 'package:petrik/pages/ikszPage.dart';
 import 'package:petrik/pages/chPage.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
-
-  void _handleLogout(BuildContext context) {
-    // Here implement the logic to log out the user
-    // For example, you could clear the user's session data, navigate
-    // back to the login page, etc.
-    Navigator.popUntil(context, ModalRoute.withName('/login'));
-  }
-
+  @override
   _MainState createState() => _MainState();
 }
 
@@ -23,10 +14,12 @@ class _MainState extends State<MainPage> {
   static final List<Widget> _widgetOptions = <Widget>[
     const Page1(),
     const Page2(),
-    const Page3(),
   ];
 
-  static final List<String> _titleList = ['IKSZ', 'Helyettesít', 'Fiók'];
+  static final List<String> _titleList = [
+    'IKSZ',
+    'Helyettesít',
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -73,10 +66,6 @@ class _MainState extends State<MainPage> {
               icon: Icon(Icons.group_remove),
               label: 'Helyettesít',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle),
-              label: 'Fiók',
-            )
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
@@ -101,14 +90,5 @@ class Page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const ChPage();
-  }
-}
-
-class Page3 extends StatelessWidget {
-  const Page3({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const ProfilePage();
   }
 }
