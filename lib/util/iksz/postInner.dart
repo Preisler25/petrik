@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:petrik/util/serverFunc.dart';
+import 'dart:ui' as ui;
 
 import '../../user/profile.dart';
 import '../../user/user.dart';
@@ -85,16 +86,8 @@ class PostInner {
           //this is the open container
           //--
           return Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Colors.white,
-                  Colors.cyan,
-                ],
-              ),
-            ),
+            decoration:
+                const BoxDecoration(color: Color.fromARGB(194, 31, 213, 222)),
             child: Column(
               children: [
                 Container(
@@ -130,28 +123,34 @@ class PostInner {
                   width: MediaQuery.of(context).size.width,
                   padding: const EdgeInsets.only(left: 10, right: 10),
                   child: Container(
-                    height: 450,
+                    height: 500,
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.all(10),
                     decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: Color.fromARGB(205, 255, 255, 255),
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
-                    child: Column(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: SingleChildScrollView(
-                            child: Text(
-                              description,
-                              style: const TextStyle(
-                                fontSize: 23.0,
-                                color: Colors.black,
+                    child: new BackdropFilter(
+                      filter: new ui.ImageFilter.blur(
+                        sigmaX: 5.0,
+                        sigmaY: 5.0,
+                      ),
+                      child: Column(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: SingleChildScrollView(
+                              child: Text(
+                                description,
+                                style: const TextStyle(
+                                  fontSize: 23.0,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
