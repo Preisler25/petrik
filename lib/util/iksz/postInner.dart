@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
+import 'package:petrik/components/joinIksz.dart';
+import 'package:petrik/user/saveUsedEmail.dart';
 import 'package:petrik/util/serverFunc.dart';
 import 'dart:ui' as ui;
 
@@ -156,47 +158,24 @@ class PostInner {
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                         )),
                     onPressed: () {
-                      User user = getUser();
-                      Future<Message> message = joinIksz(user, title);
-                      message.then((value) {
-                        if (value.status == true) {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: const Text('Sikeres csatlakozás!'),
-                                content: Text(value.message),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: const Text('OK'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: const Text('Error'),
-                                content: Text(value.message),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: const Text('OK'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        }
-                      });
+                      Future<Map<String, String>> email = isSavedEmail();
+                      email.then(
+                        (value) {
+                          if (value['email'] != null) {
+                            String uEmail = value['email']!;
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return EmailAlert(
+                                  title: uEmail,
+                                  content: 'sadas',
+                                  onPressed: () => print("alma"),
+                                );
+                              },
+                            );
+                          }
+                        },
+                      );
                     },
                     child: const Text(
                       'Join',
