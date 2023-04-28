@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:petrik/components/textfield.dart';
+import 'package:petrik/util/serverFunc.dart';
+import 'package:petrik/util/serverMessage.dart';
 
 class EmailAlert extends StatelessWidget {
   final String title;
   final String content;
   final IconData? icon;
+  final String id;
 
   const EmailAlert({
     Key? key,
     required this.title,
     required this.content,
+    required this.id,
     this.icon,
   }) : super(key: key);
 
-  void regToIksz(String mail) {}
+  void regToIksz(String mail, String id) {
+    Future<Message> message = joinIksz(mail, id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +71,7 @@ class EmailAlert extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           child: TextButton(
-            onPressed: () => regToIksz(emailController.text.trim()),
+            onPressed: () => regToIksz(emailController.text.trim(), id),
             child: Text(
               "Jelentkezem",
               style: TextStyle(

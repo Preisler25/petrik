@@ -39,10 +39,9 @@ Future<JsonPostList> fetchPostListInner(User user) async {
   }
 }
 
-Future<Message> joinIksz(User user, String title) async {
+Future<Message> joinIksz(String email, String id) async {
   final response = await http.get(
-    Uri.parse(
-        '${AppConstants.API_JOIN}?name=${user.name}&key=${user.key}&ik=$title'),
+    Uri.parse('${AppConstants.API_JOIN}?email=$email&ik=$id'),
   );
 
   if (response.statusCode == 200) {

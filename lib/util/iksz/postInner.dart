@@ -162,7 +162,8 @@ class PostInner {
                         context: context,
                         builder: (BuildContext context) {
                           return EmailAlert(
-                            title: 'Jelentkezz!',
+                            id: id,
+                            title: title,
                             content:
                                 'Kérlek add meg azt az email címedet amire szeretnéd kapni az információt erről a programról.',
                           );
