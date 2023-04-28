@@ -148,8 +148,8 @@ class PostInner {
                 ),
                 const SizedBox(height: 10),
                 SizedBox(
-                  width: 100,
-                  height: 40,
+                  width: 200,
+                  height: 80,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,

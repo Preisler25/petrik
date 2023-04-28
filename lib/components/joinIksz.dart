@@ -47,7 +47,7 @@ class EmailAlert extends StatelessWidget {
         ],
       ),
       content: Container(
-        height: 100,
+        height: 150,
         child: Column(
           children: [
             Text(
@@ -58,6 +58,7 @@ class EmailAlert extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
+            SizedBox(height: 20),
             A_TextField(
               controller: emailController,
               hintText: 'email',
