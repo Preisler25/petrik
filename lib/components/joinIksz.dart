@@ -4,16 +4,16 @@ import 'package:petrik/components/textfield.dart';
 class EmailAlert extends StatelessWidget {
   final String title;
   final String content;
-  final Function onPressed;
   final IconData? icon;
 
   const EmailAlert({
     Key? key,
     required this.title,
     required this.content,
-    required this.onPressed,
     this.icon,
   }) : super(key: key);
+
+  void regToIksz(String mail) {}
 
   @override
   Widget build(BuildContext context) {
@@ -40,31 +40,34 @@ class EmailAlert extends StatelessWidget {
           ),
         ],
       ),
-      content: Column(
-        children: [
-          A_TextField(
-            controller: emailController,
-            hintText: 'email',
-            obscureText: false,
-            prefixIcon: Icons.person,
-          ),
-          Text(
-            content,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18.0,
+      content: Container(
+        height: 100,
+        child: Column(
+          children: [
+            Text(
+              content,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+            A_TextField(
+              controller: emailController,
+              hintText: 'email',
+              obscureText: false,
+              prefixIcon: Icons.person,
+            ),
+          ],
+        ),
       ),
       actions: [
         Container(
           alignment: Alignment.center,
           child: TextButton(
-            onPressed: () => onPressed(),
+            onPressed: () => regToIksz(emailController.text.trim()),
             child: Text(
-              "OK",
+              "Jelentkezem",
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 18.0,

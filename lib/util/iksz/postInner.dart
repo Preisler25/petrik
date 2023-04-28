@@ -158,27 +158,19 @@ class PostInner {
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                         )),
                     onPressed: () {
-                      Future<Map<String, String>> email = isSavedEmail();
-                      email.then(
-                        (value) {
-                          if (value['email'] != null) {
-                            String uEmail = value['email']!;
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return EmailAlert(
-                                  title: uEmail,
-                                  content: 'sadas',
-                                  onPressed: () => print("alma"),
-                                );
-                              },
-                            );
-                          }
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return EmailAlert(
+                            title: 'Jelentkezz!',
+                            content:
+                                'Kérlek add meg azt az email címedet amire szeretnéd kapni az információt erről a programról.',
+                          );
                         },
                       );
                     },
                     child: const Text(
-                      'Join',
+                      'Jelentkezem',
                       style: TextStyle(
                         fontSize: 20.0,
                         color: Colors.black,
