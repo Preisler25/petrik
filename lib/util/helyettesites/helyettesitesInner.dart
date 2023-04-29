@@ -147,7 +147,7 @@ class HelyetInner {
                   ),
                 ),
                 Text(
-                  ':(',
+                  'Helyettesítés',
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 40.0,
