@@ -9,12 +9,14 @@ class HelyetInner {
   final String ora;
   final String helytan_name;
   final String terem;
+  final String osztaly;
 
   const HelyetInner({
     required this.t_name,
     required this.ora,
     required this.helytan_name,
     required this.terem,
+    required this.osztaly,
   });
 
   //this will crate a post object from a json object
@@ -24,6 +26,7 @@ class HelyetInner {
       ora: json['ora'],
       helytan_name: json['helytan'],
       terem: json['terem'],
+      osztaly: json['class'],
     );
   }
 
@@ -63,6 +66,16 @@ class HelyetInner {
               alignment: const Alignment(0.0, 0.0),
               child: ListView(
                 children: [
+                  const SizedBox(height: 7),
+                  Text(
+                    textAlign: TextAlign.center,
+                    osztaly,
+                    style: const TextStyle(
+                      fontSize: 30.0,
+                      color: Color.fromARGB(255, 36, 38, 40),
+                    ),
+                  ),
+                  const SizedBox(height: 2),
                   Text(
                     textAlign: TextAlign.center,
                     t_name,
@@ -71,16 +84,16 @@ class HelyetInner {
                       color: Color.fromARGB(255, 36, 38, 40),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 2),
                   Text(
                     textAlign: TextAlign.center,
                     ora,
                     style: const TextStyle(
-                      fontSize: 30.0,
+                      fontSize: 25.0,
                       color: Color.fromARGB(255, 36, 38, 40),
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   Text(
                     textAlign: TextAlign.center,
                     helytan_name,
@@ -89,12 +102,12 @@ class HelyetInner {
                       color: Color.fromARGB(255, 36, 38, 40),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 2),
                   Text(
                     textAlign: TextAlign.center,
                     terem,
                     style: const TextStyle(
-                      fontSize: 30.0,
+                      fontSize: 18.0,
                       color: Color.fromARGB(255, 36, 38, 40),
                     ),
                   ),
@@ -134,7 +147,7 @@ class HelyetInner {
                   ),
                 ),
                 Text(
-                  t_name,
+                  ':(',
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 40.0,
@@ -156,13 +169,21 @@ class HelyetInner {
                     child: ListView(
                       children: [
                         Text(
+                          'Sajnos a mai napon $helytan_name nem tudja megtartani a $osztaly $ora-ját',
+                          style: const TextStyle(
+                            fontSize: 23.0,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const SizedBox(height: 50),
+                        Text(
                           'Helyettesitő tanár: $helytan_name',
                           style: const TextStyle(
                             fontSize: 23.0,
                             color: Colors.black,
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 5),
                         Text(
                           'Terem: $terem',
                           style: const TextStyle(
