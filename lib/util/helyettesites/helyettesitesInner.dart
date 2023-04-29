@@ -35,27 +35,70 @@ class HelyetInner {
 
   //view of the post
   Widget build(BuildContext context) {
-    double.infinity;
     return SizedBox(
       width: 200,
       height: 200,
       child: OpenContainer(
         closedElevation: 10,
+        closedColor: Colors.transparent,
         closedShape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(6)),
+          borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
-        closedColor: const Color.fromARGB(255, 103, 255, 212),
         closedBuilder: (context, action) {
-          return Align(
-            //--
-            //this is the closed container
-            //--
-            alignment: const Alignment(0.0, 0.0),
-            child: Text(
-              "Tanár: $t_name\nÓra: $ora",
-              style: const TextStyle(
-                fontSize: 25.0,
-                color: Colors.black,
+          return Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.cyanAccent,
+                  Colors.cyan,
+                ],
+              ),
+            ),
+            child: Align(
+              //--
+              //this is the closed container
+              //--
+              alignment: const Alignment(0.0, 0.0),
+              child: ListView(
+                children: [
+                  Text(
+                    textAlign: TextAlign.center,
+                    t_name,
+                    style: const TextStyle(
+                      fontSize: 30.0,
+                      color: Color.fromARGB(255, 36, 38, 40),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    textAlign: TextAlign.center,
+                    ora,
+                    style: const TextStyle(
+                      fontSize: 30.0,
+                      color: Color.fromARGB(255, 36, 38, 40),
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  Text(
+                    textAlign: TextAlign.center,
+                    helytan_name,
+                    style: const TextStyle(
+                      fontSize: 30.0,
+                      color: Color.fromARGB(255, 36, 38, 40),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    textAlign: TextAlign.center,
+                    terem,
+                    style: const TextStyle(
+                      fontSize: 30.0,
+                      color: Color.fromARGB(255, 36, 38, 40),
+                    ),
+                  ),
+                ],
               ),
             ),
           );
@@ -65,24 +108,13 @@ class HelyetInner {
           //this is the open container
           //--
           return Container(
-            color: const Color.fromARGB(255, 103, 255, 212),
-            child: Stack(
+            decoration:
+                const BoxDecoration(color: Color.fromARGB(194, 31, 213, 222)),
+            child: Column(
               children: [
-                Align(
-                  alignment: const Alignment(0, -0.8),
-                  child: Text(
-                    "\n\nHiányzó tanár:\t$t_name\n\nÓra:\t $ora\n\nHelyettesítő tanár:\t $helytan_name\n\nTerem:\t $terem",
-                    style: const TextStyle(
-                      fontSize: 30.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                Align(
-                  //--
-                  //this is the close button
-                  //--
-                  alignment: const Alignment(0.9, -0.9),
+                Container(
+                  alignment: Alignment.topRight,
+                  padding: const EdgeInsets.only(top: 40, right: 10),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black,
@@ -100,7 +132,48 @@ class HelyetInner {
                       ),
                     ),
                   ),
-                )
+                ),
+                Text(
+                  t_name,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 40.0,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Container(
+                    height: 400,
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(205, 255, 255, 255),
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    child: ListView(
+                      children: [
+                        Text(
+                          'Helyettesitő tanár: $helytan_name',
+                          style: const TextStyle(
+                            fontSize: 23.0,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          'Terem: $terem',
+                          style: const TextStyle(
+                            fontSize: 23.0,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           );

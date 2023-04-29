@@ -65,8 +65,8 @@ Future<ServerValidation> regUser(
 ) async {
   print('--name: $name, password: $password, email: $email');
 
-  final response = await http.get(Uri.parse(
-      '${AppConstants.API_REG}?name=$name&password=$password&email=$email'));
+  final response =
+      await http.get(Uri.parse('?name=$name&password=$password&email=$email'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -84,8 +84,7 @@ Future<ServerValidation> regUser(
 }
 
 Future<ServerValidation> checkUser(String name, String password) async {
-  final response = await http.get(
-      Uri.parse('${AppConstants.API_LOGIN}?name=$name&password=$password'));
+  final response = await http.get(Uri.parse('$name=$name&password=$password'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
